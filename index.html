@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maria Portfolio</title>
+  <meta name="description" content="Maria del Carmen Contreras is a product designer and developer building digital products through UX, code, and AI." />
+  <meta property="og:title" content="Maria Portfolio" />
+  <meta property="og:description" content="Product design, web development, and AI experiments." />
+  <meta property="og:type" content="website" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&f[]=boska@400,500,700&display=swap" rel="stylesheet">
+  <style>
+    /* Art direction: clean personal portfolio inspired by minimal editorial designer sites.
+       Palette: neutral black/white with a soft cobalt accent.
+       Typography: Boska for expressive hero, Satoshi for body/UI.
+       Density: spacious and calm. */
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2.2rem, 1.2rem + 3vw, 4.6rem);
+      --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem;
+      --color-bg: #f7f6f3;
+      --color-surface: #fbfaf8;
+      --color-border: rgba(20,20,20,0.12);
+      --color-text: #151515;
+      --color-text-muted: #6b6b6b;
+      --color-primary: #2d4fff;
+      --color-primary-soft: rgba(45,79,255,0.08);
+      --radius-lg: 1rem;
+      --radius-full: 9999px;
+      --shadow-sm: 0 8px 30px rgba(0,0,0,0.05);
+      --font-display: 'Boska', Georgia, serif;
+      --font-body: 'Satoshi', Inter, sans-serif;
+      --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      --content: 1120px;
+    }
+    [data-theme="dark"] {
+      --color-bg: #111111;
+      --color-surface: #171717;
+      --color-border: rgba(255,255,255,0.12);
+      --color-text: #f3f0ea;
+      --color-text-muted: #a8a29a;
+      --color-primary: #90a4ff;
+      --color-primary-soft: rgba(144,164,255,0.12);
+      --shadow-sm: 0 12px 36px rgba(0,0,0,0.34);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+    a, button { transition: all var(--transition); }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    .skip-link {
+      position: absolute; left: 1rem; top: -3rem; background: var(--color-text); color: var(--color-bg);
+      padding: .75rem 1rem; border-radius: .5rem; z-index: 100;
+    }
+    .skip-link:focus { top: 1rem; }
+    .container { width: min(calc(100% - 2rem), var(--content)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--color-bg) 84%, transparent);
+      border-bottom: 1px solid transparent;
+    }
+    .site-header.scrolled { border-color: var(--color-border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding: 1rem 0; }
+    .brand { display: inline-flex; align-items: center; gap: .8rem; font-size: var(--text-sm); font-weight: 500; letter-spacing: .02em; }
+    .brand-mark { width: 1.8rem; height: 1.8rem; }
+    .nav-links { display: flex; gap: 1rem; align-items: center; }
+    .nav-links a, .theme-toggle {
+      min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: .65rem .9rem;
+      border-radius: var(--radius-full); font-size: var(--text-sm);
+    }
+    .nav-links a:hover, .theme-toggle:hover { background: var(--color-primary-soft); color: var(--color-primary); }
+    .theme-toggle { border: 1px solid var(--color-border); background: transparent; color: var(--color-text); }
+    main { padding: clamp(2rem, 5vw, 4rem) 0 4rem; }
+    .hero {
+      min-height: calc(88vh - 72px); display: grid; align-items: center; padding: clamp(2rem, 6vw, 5rem) 0;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(2rem, 5vw, 5rem); align-items: end; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem; padding: .45rem .8rem; margin-bottom: 1.2rem;
+      border: 1px solid var(--color-border); border-radius: var(--radius-full); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: .16em;
+      color: var(--color-text-muted);
+    }
+    h1 {
+      margin: 0; font-family: var(--font-display); font-size: var(--text-2xl); line-height: .96; letter-spacing: -0.03em; max-width: 10ch;
+      font-weight: 500;
+    }
+    .hero p {
+      margin: 1.5rem 0 0; max-width: 34rem; color: var(--color-text-muted);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2rem; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .9rem 1.15rem;
+      border-radius: var(--radius-full); border: 1px solid var(--color-border); font-size: var(--text-sm); font-weight: 500;
+    }
+    .button.primary { background: var(--color-text); color: var(--color-bg); border-color: var(--color-text); }
+    .button.primary:hover { transform: translateY(-1px); opacity: .92; }
+    .button.secondary:hover { background: var(--color-primary-soft); color: var(--color-primary); border-color: transparent; }
+    .hero-note {
+      padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); box-shadow: var(--shadow-sm);
+    }
+    .hero-note span { display: block; font-size: var(--text-xs); letter-spacing: .14em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: .8rem; }
+    .hero-note strong { display: block; font-size: var(--text-lg); line-height: 1.2; margin-bottom: .8rem; }
+    .hero-note p { margin: 0; font-size: var(--text-sm); }
+    .mini-list { margin-top: 1.2rem; display: grid; gap: .75rem; }
+    .mini-list div { display: flex; justify-content: space-between; gap: 1rem; padding-top: .75rem; border-top: 1px solid var(--color-border); font-size: var(--text-sm); }
+    section { padding: clamp(2.5rem, 8vw, 6rem) 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 1rem; align-items: end; margin-bottom: 1.5rem; }
+    h2 { margin: 0; font-size: var(--text-xl); line-height: 1.05; }
+    .muted { color: var(--color-text-muted); }
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .card {
+      padding: 1.2rem; border: 1px solid var(--color-border); border-radius: 1.2rem; background: var(--color-surface);
+      min-height: 250px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .tag { display: inline-flex; width: fit-content; padding: .35rem .6rem; border-radius: var(--radius-full); background: var(--color-primary-soft); color: var(--color-primary); font-size: var(--text-xs); letter-spacing: .08em; text-transform: uppercase; }
+    .card h3 { margin: 1rem 0 .5rem; font-size: var(--text-lg); line-height: 1.15; }
+    .card p { margin: 0; color: var(--color-text-muted); font-size: var(--text-sm); }
+    .card a { margin-top: 1.5rem; font-size: var(--text-sm); font-weight: 500; }
+    .about {
+      display: grid; grid-template-columns: .9fr 1.1fr; gap: 2rem; align-items: start;
+    }
+    .about-panel, .contact-panel {
+      border: 1px solid var(--color-border); background: var(--color-surface); border-radius: 1.2rem; padding: 1.4rem;
+    }
+    .about-list { display: grid; gap: .85rem; margin-top: 1rem; color: var(--color-text-muted); }
+    .contact-panel p { margin: .6rem 0 1.2rem; }
+    footer { padding: 0 0 2rem; }
+    .footer-inner { border-top: 1px solid var(--color-border); padding-top: 1rem; display: flex; justify-content: space-between; gap: 1rem; color: var(--color-text-muted); font-size: var(--text-sm); }
+    @media (max-width: 920px) {
+      .hero-grid, .about, .projects { grid-template-columns: 1fr; }
+      h1 { max-width: 12ch; }
+    }
+    @media (max-width: 640px) {
+      .nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { flex-wrap: wrap; }
+      .hero { min-height: auto; }
+      .section-head, .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Maria portfolio home">
+        <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="5" y="5" width="38" height="38" rx="12" stroke="currentColor" stroke-width="2"></rect>
+          <path d="M15 31V17h4.5l4.5 8 4.5-8H33v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        <span>María del Carmen Contreras</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">◐</button>
+      </nav>
+    </div>
+  </header>
+  <main id="content">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Product design · code · AI</div>
+          <h1>I design and build thoughtful digital products.</h1>
+          <p>I'm María, a product designer and developer exploring UX, web development, and AI experiments through clean interfaces and practical tools.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">View selected work</a>
+            <a class="button secondary" href="#about">About me</a>
+          </div>
+        </div>
+        <aside class="hero-note" aria-label="Introduction note">
+          <span>Current focus</span>
+          <strong>Simple interfaces with strong thinking behind them.</strong>
+          <p>This first version is intentionally minimal so we can refine the tone, typography, spacing, and sections together.</p>
+          <div class="mini-list">
+            <div><span>Based in</span><strong>Lima, Peru</strong></div>
+            <div><span>Working across</span><strong>UX/UI, web, AI</strong></div>
+            <div><span>Looking for</span><strong>Freelance &amp; product roles</strong></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Selected projects</h2>
+          <p class="muted">A minimal placeholder grid for the work you want to feature first.</p>
+        </div>
+        <div class="projects">
+          <article class="card">
+            <div>
+              <span class="tag">UX/UI</span>
+              <h3>Case study title</h3>
+              <p>Short summary for a product design or redesign project with a clear outcome.</p>
+            </div>
+            <a href="#contact">Open case study</a>
+          </article>
+          <article class="card">
+            <div>
+              <span class="tag">Web</span>
+              <h3>Development project</h3>
+              <p>A landing page, MVP, browser tool, or full-stack product you designed and built.</p>
+            </div>
+            <a href="#contact">View project</a>
+          </article>
+          <article class="card">
+            <div>
+              <span class="tag">AI</span>
+              <h3>Experiment or agent</h3>
+              <p>An AI workflow, automation, prototype, or research-heavy build with practical value.</p>
+            </div>
+            <a href="#contact">Read more</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="about">
+      <div class="container about">
+        <div>
+          <div class="section-head">
+            <h2>About</h2>
+          </div>
+          <p class="muted">I work between design and implementation, shaping interfaces, prototypes, and product ideas with clarity and attention to detail.</p>
+        </div>
+        <div class="about-panel">
+          <p>This version keeps the homepage deliberately clean: strong headline, quiet navigation, generous whitespace, and a few clear entry points. From here we can decide whether your next iteration should feel more editorial, more experimental, or more technical.</p>
+          <div class="about-list">
+            <div>Product design and UX/UI systems.</div>
+            <div>Frontend and full-stack prototyping.</div>
+            <div>AI agents, experiments, and developer tools.</div>
+            <div>Research, hackathons, and creative digital work.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <h2>Contact</h2>
+          <p class="muted">Use this area for your email, GitHub, LinkedIn, and CV when we add your real links.</p>
+          <a class="button primary" href="mailto:mcontrerasmalpar@gmail.com">mcontrerasmalpar@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="container footer-inner">
+      <span>María del Carmen Contreras — Portfolio</span>
+      <span>Built to iterate section by section</span>
+    </div>
+  </footer>
+  <script>
+    const root = document.documentElement;
+    const toggle = document.querySelector('[data-theme-toggle]');
+    const header = document.querySelector('.site-header');
+    let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    root.setAttribute('data-theme', theme);
+    const syncToggle = () => {
+      toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      toggle.textContent = theme === 'dark' ? '☘' : '◐';
+    };
+    syncToggle();
+    toggle.addEventListener('click', () => {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', theme);
+      syncToggle();
+    });
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 12);
+    onScroll();
+    document.addEventListener('scroll', onScroll, { passive: true });
+  </script>
+</body>
+</html>
