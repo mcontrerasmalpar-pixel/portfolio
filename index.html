@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,13 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,300..400&display=swap" rel="stylesheet">
   <style>
-    /* ─────────────────────────────────────────────────
-       Art direction: editorial white, inspired by Estrella Gracia.
-       Palette: pure white surfaces, near-black text, no accent color in UI.
-       Typography: Instrument Serif (display/hero) + DM Sans (body/nav/meta).
-       Density: airy, generous whitespace, large type moments.
-    ───────────────────────────────────────────────── */
-
     :root {
       --text-xs:   clamp(0.68rem, 0.64rem + 0.2vw,  0.78rem);
       --text-sm:   clamp(0.80rem, 0.76rem + 0.22vw, 0.92rem);
@@ -163,6 +156,36 @@
       color: var(--faint);
       letter-spacing: .1em;
       text-transform: uppercase;
+    }
+
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      display: flex; align-items: center; gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+    .lang-btn {
+      font-size: var(--text-xs);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .2rem .55rem;
+      color: var(--muted);
+      transition: background var(--t), color var(--t);
+      line-height: 1.4;
+    }
+    .lang-btn.active {
+      background: var(--text);
+      color: var(--bg);
+    }
+    .lang-btn:hover:not(.active) {
+      background: var(--surface);
+      color: var(--text);
+    }
+    .lang-divider {
+      width: 1px; height: 14px;
+      background: var(--border);
+      flex-shrink: 0;
     }
 
     /* ── HERO ── */
@@ -353,7 +376,7 @@
     }
     .work-item:hover .work-arrow { opacity: 1; transform: none; }
 
-    /* ── THUMB PREVIEW (hover) ── */
+    /* ── THUMB PREVIEW ── */
     .work-thumb {
       width: 80px; height: 52px;
       border-radius: 4px;
@@ -417,7 +440,7 @@
     }
     .skill:hover { color: var(--text); border-color: var(--text); }
 
-    /* ── CONTACT / FOOTER ── */
+    /* ── FOOTER ── */
     .footer-wrap {
       padding: clamp(4rem, 10vw, 8rem) clamp(1.2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem);
       border-top: 1px solid var(--border);
@@ -450,7 +473,6 @@
       color: var(--faint);
       letter-spacing: .06em;
     }
-
     .copy-inline {
       font-size: var(--text-sm);
       color: var(--muted);
@@ -476,31 +498,38 @@
       .work-item { grid-template-columns: 1fr; }
       .work-item-right { display: none; }
       .footer-row { flex-direction: column; }
-      .nav-right { display: none; }
+      .nav-right { gap: var(--space-3); }
+      .nav-location { display: none; }
     }
   </style>
 </head>
 <body>
   <div id="cursor" aria-hidden="true"></div>
   <div id="cursor-ring" aria-hidden="true"></div>
-  <a class="skip-link" href="#content">Ir al contenido</a>
+  <a class="skip-link" href="#content" data-i18n="skip">Skip to content</a>
 
   <!-- ── HEADER ── -->
   <header class="site-header" id="top">
-    <nav class="nav" aria-label="Navegación principal">
+    <nav class="nav" aria-label="Main navigation">
       <div class="nav-left">
         <span class="nav-name">Maria del Carmen</span>
         <span class="nav-sub">Lima, PE</span>
       </div>
       <div class="nav-center">
-        <a class="nav-link active" href="#top" data-nav="home">Home</a>
-        <a class="nav-link" href="#work" data-nav="work">Work</a>
-        <a class="nav-link" href="#about" data-nav="about">About</a>
-        <a class="nav-link" href="#contact" data-nav="contact">Contact</a>
+        <a class="nav-link active" href="#top"    data-nav="home"    data-i18n="nav_home">Home</a>
+        <a class="nav-link"        href="#work"   data-nav="work"    data-i18n="nav_work">Work</a>
+        <a class="nav-link"        href="#about"  data-nav="about"   data-i18n="nav_about">About</a>
+        <a class="nav-link"        href="#contact" data-nav="contact" data-i18n="nav_contact">Contact</a>
       </div>
       <div class="nav-right">
         <span class="nav-clock" id="liveClock">00:00:00</span>
-        <span class="nav-location">probably sunny</span>
+        <span class="nav-location" data-i18n="weather">probably sunny</span>
+        <!-- Language Switcher -->
+        <div class="lang-switcher" role="group" aria-label="Language">
+          <button class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+          <div class="lang-divider" aria-hidden="true"></div>
+          <button class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
+        </div>
       </div>
     </nav>
   </header>
@@ -509,23 +538,22 @@
 
     <!-- ── HERO ── -->
     <section class="hero">
-      <p class="hero-eyebrow">Product design · Web · AI</p>
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">Product design · Web · AI</p>
       <h1 class="hero-name">
-        <span class="line"><span class="line-inner">Design that</span></span>
-        <span class="line"><span class="line-inner"><em>thinks.</em></span></span>
+        <span class="line"><span class="line-inner" data-i18n="hero_line1">Design that</span></span>
+        <span class="line"><span class="line-inner"><em data-i18n="hero_line2">thinks.</em></span></span>
       </h1>
       <div class="hero-bottom">
-        <p class="hero-desc">
-          Building <strong>digital products</strong> at the intersection of
-          UX, web development, and machine learning.
+        <p class="hero-desc" data-i18n="hero_desc">
+          Building <strong>digital products</strong> at the intersection of UX, web development, and machine learning.
         </p>
         <div class="hero-cta">
-          <a class="link-arrow" href="#work">
-            Ver trabajo
+          <a class="link-arrow" href="#work" data-i18n="cta_work">
+            View work
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </a>
-          <a class="link-arrow" href="#contact">
-            Hablemos
+          <a class="link-arrow" href="#contact" data-i18n="cta_contact">
+            Let's talk
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </a>
         </div>
@@ -535,33 +563,32 @@
     <!-- ── WORK ── -->
     <section class="section-wrap" id="work">
       <div class="section-header reveal">
-        <h2 class="section-title">Work <em>selected</em></h2>
-        <span class="section-count">08 projects</span>
+        <h2 class="section-title">Work <em data-i18n="work_selected">selected</em></h2>
+        <span class="section-count" data-i18n="work_count">08 projects</span>
       </div>
 
       <!-- Filters -->
       <div class="filters reveal">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ai">AI · NLP</button>
-        <button class="filter-btn" data-filter="web">Web</button>
-        <button class="filter-btn" data-filter="ux">UX</button>
-        <button class="filter-btn" data-filter="cv">Vision</button>
+        <button class="filter-btn active" data-filter="all"  data-i18n="filter_all">All</button>
+        <button class="filter-btn" data-filter="ai"          data-i18n="filter_ai">AI · NLP</button>
+        <button class="filter-btn" data-filter="web"         data-i18n="filter_web">Web</button>
+        <button class="filter-btn" data-filter="ux"          data-i18n="filter_ux">UX</button>
+        <button class="filter-btn" data-filter="cv"          data-i18n="filter_cv">Vision</button>
       </div>
 
       <!-- 2025 -->
       <div class="year-group reveal" data-year="2025">
         <p class="year-label">2025</p>
         <div class="work-list">
-
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai nlp" tabindex="0">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
             <div class="work-item-left">
               <span class="work-num">01</span>
               <div class="work-title-group">
                 <span class="work-title">AymaraCorpus</span>
-                <span class="work-subtitle">Corpus anotado · lenguas andinas</span>
+                <span class="work-subtitle" data-i18n="proj1_sub">Annotated corpus · Andean languages</span>
                 <div class="work-tags">
                   <span class="work-tag">NLP</span>
-                  <span class="work-tag">Lenguas indígenas</span>
+                  <span class="work-tag" data-i18n="tag_indigenous">Indigenous languages</span>
                   <span class="work-tag">Open source</span>
                 </div>
               </div>
@@ -572,12 +599,12 @@
             </div>
           </a>
 
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai ux" tabindex="0">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai ux">
             <div class="work-item-left">
               <span class="work-num">02</span>
               <div class="work-title-group">
                 <span class="work-title">FlowsbyMaky Assistant</span>
-                <span class="work-subtitle">LLM · automatización de flujos</span>
+                <span class="work-subtitle" data-i18n="proj2_sub">LLM · workflow automation</span>
                 <div class="work-tags">
                   <span class="work-tag">LLM</span>
                   <span class="work-tag">Product</span>
@@ -590,7 +617,6 @@
               <span class="work-arrow">↗</span>
             </div>
           </a>
-
         </div>
       </div>
 
@@ -598,13 +624,12 @@
       <div class="year-group reveal" data-year="2024">
         <p class="year-label">2024</p>
         <div class="work-list">
-
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai nlp" tabindex="0">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
             <div class="work-item-left">
               <span class="work-num">03</span>
               <div class="work-title-group">
                 <span class="work-title">QuechuaTok</span>
-                <span class="work-subtitle">Tokenizador · NLP bajo recurso</span>
+                <span class="work-subtitle" data-i18n="proj3_sub">Tokenizer · low-resource NLP</span>
                 <div class="work-tags">
                   <span class="work-tag">NLP</span>
                   <span class="work-tag">Quechua</span>
@@ -618,12 +643,12 @@
             </div>
           </a>
 
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/Doodio" target="_blank" rel="noopener noreferrer" data-tags="web" tabindex="0">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/Doodio" target="_blank" rel="noopener noreferrer" data-tags="web">
             <div class="work-item-left">
               <span class="work-num">04</span>
               <div class="work-title-group">
                 <span class="work-title">Doodio</span>
-                <span class="work-subtitle">Generador de melodías procedurales</span>
+                <span class="work-subtitle" data-i18n="proj4_sub">Procedural melody generator</span>
                 <div class="work-tags">
                   <span class="work-tag">Web</span>
                   <span class="work-tag">Creative</span>
@@ -637,12 +662,12 @@
             </div>
           </a>
 
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="web ux" tabindex="0">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="web ux">
             <div class="work-item-left">
               <span class="work-num">05</span>
               <div class="work-title-group">
                 <span class="work-title">LatamDataMap</span>
-                <span class="work-subtitle">Visualización · indicadores sociales</span>
+                <span class="work-subtitle" data-i18n="proj5_sub">Visualization · social indicators</span>
                 <div class="work-tags">
                   <span class="work-tag">DataViz</span>
                   <span class="work-tag">D3.js</span>
@@ -655,7 +680,6 @@
               <span class="work-arrow">↗</span>
             </div>
           </a>
-
         </div>
       </div>
 
@@ -663,13 +687,12 @@
       <div class="year-group reveal" data-year="2023">
         <p class="year-label">2023</p>
         <div class="work-list">
-
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai nlp" tabindex="0">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
             <div class="work-item-left">
               <span class="work-num">06</span>
               <div class="work-title-group">
                 <span class="work-title">Khipu-ML</span>
-                <span class="work-subtitle">Codificación inspirada en khipus andinos</span>
+                <span class="work-subtitle" data-i18n="proj6_sub">Encoding inspired by Andean khipus</span>
                 <div class="work-tags">
                   <span class="work-tag">ML</span>
                   <span class="work-tag">Research</span>
@@ -682,15 +705,15 @@
             </div>
           </a>
 
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="cv ux" tabindex="0">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="cv ux">
             <div class="work-item-left">
               <span class="work-num">07</span>
               <div class="work-title-group">
                 <span class="work-title">Text Barrier Detector</span>
-                <span class="work-subtitle">Accesibilidad visual · computer vision</span>
+                <span class="work-subtitle" data-i18n="proj7_sub">Visual accessibility · computer vision</span>
                 <div class="work-tags">
                   <span class="work-tag">CV</span>
-                  <span class="work-tag">Accesibilidad</span>
+                  <span class="work-tag" data-i18n="tag_access">Accessibility</span>
                   <span class="work-tag">UX</span>
                 </div>
               </div>
@@ -701,12 +724,12 @@
             </div>
           </a>
 
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai cv" tabindex="0">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai cv">
             <div class="work-item-left">
               <span class="work-num">08</span>
               <div class="work-title-group">
                 <span class="work-title">Brain Tumor Classification</span>
-                <span class="work-subtitle">CNN · ResNet · 94% accuracy</span>
+                <span class="work-subtitle" data-i18n="proj8_sub">CNN · ResNet · 94% accuracy</span>
                 <div class="work-tags">
                   <span class="work-tag">Deep Learning</span>
                   <span class="work-tag">Medical AI</span>
@@ -719,24 +742,22 @@
               <span class="work-arrow">↗</span>
             </div>
           </a>
-
         </div>
       </div>
-
     </section>
 
     <!-- ── ABOUT ── -->
     <section class="section-wrap" id="about">
       <div class="about-grid">
         <div class="reveal">
-          <h2 class="about-headline">
+          <h2 class="about-headline" data-i18n="about_headline">
             Where design<br>meets <em>intelligence.</em>
           </h2>
-          <p class="about-body">
-            Soy <strong>product designer y developer</strong> con foco en AI, UX y sistemas digitales. Me interesa construir interfaces que piensen, que sean accesibles y que resuelvan problemas reales.
+          <p class="about-body" data-i18n="about_p1">
+            I'm a <strong>product designer and developer</strong> focused on AI, UX, and digital systems. I'm interested in building interfaces that think, that are accessible, and that solve real problems.
           </p>
-          <p class="about-body">
-            Trabajo en la intersección de investigación aplicada y diseño práctico: desde NLP para lenguas indígenas hasta herramientas web interactivas.
+          <p class="about-body" data-i18n="about_p2">
+            I work at the intersection of applied research and practical design: from NLP for indigenous languages to interactive web tools.
           </p>
           <div class="skills-wrap">
             <span class="skill">Product Design</span>
@@ -750,13 +771,13 @@
           </div>
         </div>
         <div class="about-info reveal">
-          <div class="about-row"><span class="about-row-label">Ubicación</span><span class="about-row-val">Lima, Perú</span></div>
-          <div class="about-row"><span class="about-row-label">Actualmente</span><span class="about-row-val">Flows by Maky</span></div>
-          <div class="about-row"><span class="about-row-label">Disponibilidad</span><span class="about-row-val">Open to work</span></div>
-          <div class="about-row"><span class="about-row-label">Idiomas</span><span class="about-row-val">ES · EN</span></div>
-          <div class="about-row"><span class="about-row-label">Foco actual</span><span class="about-row-val">AI product · Research</span></div>
+          <div class="about-row"><span class="about-row-label" data-i18n="row_location">Location</span><span class="about-row-val">Lima, Perú</span></div>
+          <div class="about-row"><span class="about-row-label" data-i18n="row_current">Currently</span><span class="about-row-val">Flows by Maky</span></div>
+          <div class="about-row"><span class="about-row-label" data-i18n="row_avail">Availability</span><span class="about-row-val" data-i18n="row_avail_val">Open to work</span></div>
+          <div class="about-row"><span class="about-row-label" data-i18n="row_langs">Languages</span><span class="about-row-val">ES · EN</span></div>
+          <div class="about-row"><span class="about-row-label" data-i18n="row_focus">Focus</span><span class="about-row-val">AI product · Research</span></div>
           <div class="about-row"><span class="about-row-label">Email</span>
-            <button class="copy-inline" id="copyEmailBtn" aria-label="Copiar email">mcontrerasmalpar@gmail.com</button>
+            <button class="copy-inline" id="copyEmailBtn" aria-label="Copy email">mcontrerasmalpar@gmail.com</button>
           </div>
         </div>
       </div>
@@ -764,7 +785,7 @@
 
     <!-- ── CONTACT ── -->
     <section class="footer-wrap" id="contact">
-      <h2 class="footer-headline reveal">
+      <h2 class="footer-headline reveal" data-i18n="footer_headline">
         Let's<br><em>talk.</em>
       </h2>
       <div class="footer-row reveal">
@@ -781,13 +802,137 @@
             <span id="footerBtnText">mcontrerasmalpar@gmail.com</span>
           </button>
         </div>
-        <span class="footer-copy">© 2026 Maria del Carmen Contreras · Diseñado con intención ✦</span>
+        <span class="footer-copy" data-i18n="footer_copy">© 2026 Maria del Carmen Contreras · Designed with intention ✦</span>
       </div>
     </section>
 
   </main>
 
   <script>
+    // ── TRANSLATIONS ──
+    const i18n = {
+      en: {
+        skip:           'Skip to content',
+        nav_home:       'Home',
+        nav_work:       'Work',
+        nav_about:      'About',
+        nav_contact:    'Contact',
+        weather:        'probably sunny',
+        hero_eyebrow:   'Product design · Web · AI',
+        hero_line1:     'Design that',
+        hero_line2:     'thinks.',
+        hero_desc:      'Building <strong>digital products</strong> at the intersection of UX, web development, and machine learning.',
+        cta_work:       'View work',
+        cta_contact:    "Let's talk",
+        work_selected:  'selected',
+        work_count:     '08 projects',
+        filter_all:     'All',
+        filter_ai:      'AI · NLP',
+        filter_web:     'Web',
+        filter_ux:      'UX',
+        filter_cv:      'Vision',
+        proj1_sub:      'Annotated corpus · Andean languages',
+        tag_indigenous: 'Indigenous languages',
+        proj2_sub:      'LLM · workflow automation',
+        proj3_sub:      'Tokenizer · low-resource NLP',
+        proj4_sub:      'Procedural melody generator',
+        proj5_sub:      'Visualization · social indicators',
+        proj6_sub:      'Encoding inspired by Andean khipus',
+        proj7_sub:      'Visual accessibility · computer vision',
+        tag_access:     'Accessibility',
+        proj8_sub:      'CNN · ResNet · 94% accuracy',
+        about_headline: 'Where design<br>meets <em>intelligence.</em>',
+        about_p1:       "I'm a <strong>product designer and developer</strong> focused on AI, UX, and digital systems. I'm interested in building interfaces that think, that are accessible, and that solve real problems.",
+        about_p2:       'I work at the intersection of applied research and practical design: from NLP for indigenous languages to interactive web tools.',
+        row_location:   'Location',
+        row_current:    'Currently',
+        row_avail:      'Availability',
+        row_avail_val:  'Open to work',
+        row_langs:      'Languages',
+        row_focus:      'Focus',
+        footer_headline:'Let\'s<br><em>talk.</em>',
+        footer_copy:    '© 2026 Maria del Carmen Contreras · Designed with intention ✦',
+        copied:         '✓ Copied!',
+      },
+      es: {
+        skip:           'Ir al contenido',
+        nav_home:       'Inicio',
+        nav_work:       'Trabajo',
+        nav_about:      'Sobre mí',
+        nav_contact:    'Contacto',
+        weather:        'probablemente soleado',
+        hero_eyebrow:   'Diseño de producto · Web · IA',
+        hero_line1:     'Diseño que',
+        hero_line2:     'piensa.',
+        hero_desc:      'Creando <strong>productos digitales</strong> en la intersección de UX, desarrollo web e inteligencia artificial.',
+        cta_work:       'Ver trabajo',
+        cta_contact:    'Hablemos',
+        work_selected:  'seleccionado',
+        work_count:     '08 proyectos',
+        filter_all:     'Todo',
+        filter_ai:      'IA · NLP',
+        filter_web:     'Web',
+        filter_ux:      'UX',
+        filter_cv:      'Visión',
+        proj1_sub:      'Corpus anotado · lenguas andinas',
+        tag_indigenous: 'Lenguas indígenas',
+        proj2_sub:      'LLM · automatización de flujos',
+        proj3_sub:      'Tokenizador · NLP bajo recurso',
+        proj4_sub:      'Generador de melodías procedurales',
+        proj5_sub:      'Visualización · indicadores sociales',
+        proj6_sub:      'Codificación inspirada en khipus andinos',
+        proj7_sub:      'Accesibilidad visual · computer vision',
+        tag_access:     'Accesibilidad',
+        proj8_sub:      'CNN · ResNet · 94% precisión',
+        about_headline: 'Donde el diseño<br>se encuentra con la <em>inteligencia.</em>',
+        about_p1:       'Soy <strong>diseñadora de producto y desarrolladora</strong> con foco en IA, UX y sistemas digitales. Me interesa construir interfaces que piensen, que sean accesibles y que resuelvan problemas reales.',
+        about_p2:       'Trabajo en la intersección de investigación aplicada y diseño práctico: desde NLP para lenguas indígenas hasta herramientas web interactivas.',
+        row_location:   'Ubicación',
+        row_current:    'Actualmente',
+        row_avail:      'Disponibilidad',
+        row_avail_val:  'Disponible',
+        row_langs:      'Idiomas',
+        row_focus:      'Foco actual',
+        footer_headline:'Hablemos.<br><em>✦</em>',
+        footer_copy:    '© 2026 Maria del Carmen Contreras · Diseñado con intención ✦',
+        copied:         '✓ ¡Copiado!',
+      }
+    };
+
+    let currentLang = 'en';
+
+    function applyLang(lang) {
+      currentLang = lang;
+      const t = i18n[lang];
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (!t[key]) return;
+        // Use innerHTML for entries that contain HTML tags
+        if (/<[a-z][\s\S]*>/i.test(t[key])) {
+          el.innerHTML = t[key];
+        } else {
+          el.textContent = t[key];
+        }
+      });
+
+      // Update lang buttons state
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        const active = btn.dataset.lang === lang;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
+    }
+
+    // Wire up lang buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    });
+
+    // Init with English
+    applyLang('en');
+
     // ── CLOCK ──
     function updateClock(){
       const d=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Lima'}));
@@ -819,10 +964,9 @@
     const EMAIL='mcontrerasmalpar@gmail.com';
     function doCopy(btn,label){
       navigator.clipboard.writeText(EMAIL).then(()=>{
-        const prev=btn.textContent||btn.innerText;
-        if(label) label.textContent='✓ Copiado!';
-        else btn.textContent='✓ Copiado!';
-        setTimeout(()=>{ if(label) label.textContent=EMAIL; else btn.textContent=EMAIL; },2200);
+        const msg = i18n[currentLang].copied;
+        if(label){ label.textContent=msg; setTimeout(()=>{ label.textContent=EMAIL; },2200); }
+        else { const prev=btn.textContent; btn.textContent=msg; setTimeout(()=>{ btn.textContent=prev; },2200); }
       });
     }
     const cb=document.getElementById('copyEmailBtn');
@@ -843,9 +987,7 @@
           const tags=(item.dataset.tags||'').split(' ');
           const show=f==='all'||tags.includes(f);
           item.style.display=show?'':'none';
-          item.style.opacity=show?'':'0';
         });
-        // Hide year groups that are empty
         document.querySelectorAll('.year-group').forEach(group=>{
           const visible=Array.from(group.querySelectorAll('.work-item')).some(i=>i.style.display!=='none');
           group.style.display=visible?'':'none';
