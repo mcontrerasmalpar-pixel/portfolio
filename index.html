@@ -400,6 +400,153 @@
     .proj-link-arrow{display:inline-block;transition:transform .28s var(--ease-spring);}
     .proj-card:hover .proj-link-arrow{transform:translate(3px,-3px);}
 
+    /* ─────────────────────────────────────────────
+       ── MORE PROJECTS FOLDER INTERACTION ──
+    ───────────────────────────────────────────── */
+    .more-projects-wrap{
+      display:flex;flex-direction:column;align-items:center;
+      gap:var(--space-6);padding-top:var(--space-10);
+    }
+
+    /* Folder stage */
+    .folder-stage{
+      position:relative;
+      width:220px;height:200px;
+      cursor:none;
+      user-select:none;
+    }
+
+    /* Fan cards — stack behind the folder */
+    .fan-card{
+      position:absolute;
+      width:130px;height:90px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+      bottom:52px;left:50%;
+      transform-origin:center bottom;
+      transform:translateX(-50%) rotate(0deg) translateY(0px);
+      transition:transform .55s var(--ease-spring), opacity .4s var(--ease), box-shadow .4s;
+      box-shadow:var(--shadow-sm);
+      will-change:transform;
+      pointer-events:none;
+    }
+    .fan-card img{
+      width:100%;height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .fan-card-placeholder{
+      width:100%;height:100%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.8rem;
+    }
+
+    /* Individual card colors */
+    .fan-card:nth-child(1){background:linear-gradient(135deg,#e8f4ff,#b3d4f5);z-index:3;}
+    .fan-card:nth-child(2){background:linear-gradient(135deg,#fff5e0,#ffd591);z-index:2;}
+    .fan-card:nth-child(3){background:linear-gradient(135deg,#f0e8ff,#d4b8f0);z-index:1;}
+
+    /* Fan open state */
+    .folder-stage.open .fan-card:nth-child(1){
+      transform:translateX(calc(-50% - 88px)) rotate(-22deg) translateY(-32px);
+      box-shadow:var(--shadow-md);
+    }
+    .folder-stage.open .fan-card:nth-child(2){
+      transform:translateX(-50%) rotate(0deg) translateY(-44px);
+      box-shadow:var(--shadow-md);
+    }
+    .folder-stage.open .fan-card:nth-child(3){
+      transform:translateX(calc(-50% + 88px)) rotate(22deg) translateY(-32px);
+      box-shadow:var(--shadow-md);
+    }
+
+    /* Hover (desktop) — slight pre-open */
+    @media(hover:hover){
+      .folder-stage:hover .fan-card:nth-child(1){
+        transform:translateX(calc(-50% - 44px)) rotate(-10deg) translateY(-14px);
+      }
+      .folder-stage:hover .fan-card:nth-child(2){
+        transform:translateX(-50%) rotate(0deg) translateY(-18px);
+      }
+      .folder-stage:hover .fan-card:nth-child(3){
+        transform:translateX(calc(-50% + 44px)) rotate(10deg) translateY(-14px);
+      }
+      .folder-stage.open .fan-card:nth-child(1){
+        transform:translateX(calc(-50% - 88px)) rotate(-22deg) translateY(-32px);
+      }
+      .folder-stage.open .fan-card:nth-child(2){
+        transform:translateX(-50%) rotate(0deg) translateY(-44px);
+      }
+      .folder-stage.open .fan-card:nth-child(3){
+        transform:translateX(calc(-50% + 88px)) rotate(22deg) translateY(-32px);
+      }
+    }
+
+    /* Folder SVG body */
+    .folder-body{
+      position:absolute;bottom:0;left:50%;
+      transform:translateX(-50%);
+      width:220px;height:160px;
+      z-index:10;
+      transition:transform .3s var(--ease-spring),filter .3s;
+      pointer-events:none;
+    }
+    .folder-stage:hover .folder-body{
+      transform:translateX(-50%) translateY(-4px);
+      filter:brightness(1.08);
+    }
+    .folder-stage.open .folder-body{
+      transform:translateX(-50%) translateY(-6px);
+      filter:brightness(1.1);
+    }
+
+    /* Mascot inside folder */
+    .folder-mascot{
+      position:absolute;bottom:22px;left:50%;
+      transform:translateX(-50%);
+      font-size:2.4rem;z-index:11;
+      transition:transform .45s var(--ease-spring);
+      pointer-events:none;
+      line-height:1;
+    }
+    .folder-stage.open .folder-mascot{
+      transform:translateX(-50%) translateY(-10px) scale(1.1);
+    }
+
+    /* "Más proyectos" label */
+    .more-projects-label{
+      font-size:var(--text-sm);color:var(--chalk-muted);
+      letter-spacing:.05em;
+      display:flex;align-items:center;gap:.4rem;
+      transition:color .2s var(--ease);
+    }
+    .folder-stage:hover ~ .more-projects-label,
+    .folder-stage.open ~ .more-projects-label{
+      color:var(--chalk-accent);
+    }
+    .more-projects-label svg{
+      transition:transform .4s var(--ease-spring);
+    }
+    .folder-stage.open ~ .more-projects-label svg{
+      transform:rotate(180deg);
+    }
+
+    /* Expandable extra projects */
+    .extra-projects{
+      width:100%;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:1.25rem;
+      max-height:0;overflow:hidden;
+      transition:max-height .7s var(--ease), opacity .5s var(--ease);
+      opacity:0;pointer-events:none;
+    }
+    .extra-projects.visible{
+      max-height:1200px;
+      opacity:1;pointer-events:auto;
+    }
+
     /* ── ABOUT ── */
     .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-12);align-items:start;}
     .about-text h2{margin-bottom:var(--space-6);}
@@ -528,6 +675,7 @@
       .proj-card.featured{grid-column:auto;}
       .nav{grid-template-columns:1fr auto;}
       .nav-left{display:none;}
+      .extra-projects{grid-template-columns:1fr;}
     }
     @media(max-width:640px){
       .nav{grid-template-columns:1fr;}
@@ -704,6 +852,82 @@
           </article>
 
         </div>
+
+        <!-- ── MORE PROJECTS FOLDER ── -->
+        <div class="more-projects-wrap reveal">
+
+          <!-- Folder toggle -->
+          <div class="folder-stage" id="folderStage" role="button" tabindex="0" aria-expanded="false" aria-controls="extraProjects" aria-label="Ver más proyectos">
+
+            <!-- Fan cards (previews) -->
+            <div class="fan-card" aria-hidden="true">
+              <div class="fan-card-placeholder" style="background:linear-gradient(135deg,#dbeafe,#93c5fd);">🌎</div>
+            </div>
+            <div class="fan-card" aria-hidden="true">
+              <div class="fan-card-placeholder" style="background:linear-gradient(135deg,#fef9c3,#fde68a);">🤖</div>
+            </div>
+            <div class="fan-card" aria-hidden="true">
+              <div class="fan-card-placeholder" style="background:linear-gradient(135deg,#ede9fe,#c4b5fd);">📊</div>
+            </div>
+
+            <!-- Folder SVG -->
+            <svg class="folder-body" viewBox="0 0 220 160" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Folder back -->
+              <path d="M8 44 Q8 32 20 32 L88 32 Q96 32 100 40 L108 52 L200 52 Q212 52 212 64 L212 148 Q212 156 204 156 L16 156 Q8 156 8 148 Z" fill="#1565c0"/>
+              <!-- Folder tab -->
+              <path d="M8 44 Q8 32 20 32 L88 32 Q96 32 100 40 L108 52 L8 52 Z" fill="#1976d2"/>
+              <!-- Folder front body -->
+              <rect x="8" y="52" width="204" height="104" rx="10" fill="#1e88e5"/>
+              <!-- Shine -->
+              <path d="M20 56 Q110 62 200 56 L200 68 Q110 74 20 68 Z" fill="rgba(255,255,255,0.07)"/>
+            </svg>
+
+            <!-- Mascot / star emoji -->
+            <div class="folder-mascot" aria-hidden="true">🌟</div>
+          </div>
+
+          <span class="more-projects-label" aria-hidden="true">
+            Más proyectos
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+
+          <!-- Extra projects grid (hidden until folder open) -->
+          <div class="extra-projects" id="extraProjects" aria-hidden="true">
+
+            <article class="proj-card" tabindex="0">
+              <div class="proj-thumb"><div class="proj-thumb-inner" style="background:linear-gradient(135deg,#0c2a4a,#0e3d6e);">🌎</div></div>
+              <div class="proj-body">
+                <div class="proj-meta"><span class="proj-tag">NLP · Lenguas</span><span class="proj-year">2025</span></div>
+                <h3 class="proj-title">AymaraCorpus</h3>
+                <p class="proj-desc">Corpus anotado de aymara para tareas de clasificacion de sentimientos y deteccion de dialectos. Contribucion a recursos abiertos para lenguas indigenas andinas.</p>
+                <a class="proj-link" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer">Ver en GitHub <span class="proj-link-arrow">↗</span></a>
+              </div>
+            </article>
+
+            <article class="proj-card" tabindex="0">
+              <div class="proj-thumb"><div class="proj-thumb-inner" style="background:linear-gradient(135deg,#1a1a2e,#16213e);">🤖</div></div>
+              <div class="proj-body">
+                <div class="proj-meta"><span class="proj-tag">LLM · Product</span><span class="proj-year">2025</span></div>
+                <h3 class="proj-title">FlowsbyMaky Assistant</h3>
+                <p class="proj-desc">Asistente IA conversacional para automatizacion de flujos de trabajo. Fine-tuning de LLM para contextos especificos de producto y soporte al cliente.</p>
+                <a class="proj-link" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer">Ver proyecto <span class="proj-link-arrow">↗</span></a>
+              </div>
+            </article>
+
+            <article class="proj-card" tabindex="0">
+              <div class="proj-thumb"><div class="proj-thumb-inner" style="background:linear-gradient(135deg,#1c1b3a,#2d2b5e);">📊</div></div>
+              <div class="proj-body">
+                <div class="proj-meta"><span class="proj-tag">DataViz · Web</span><span class="proj-year">2024</span></div>
+                <h3 class="proj-title">LatamDataMap</h3>
+                <p class="proj-desc">Visualizacion interactiva de indicadores sociales y linguisticos de America Latina. D3.js + datos abiertos del Banco Mundial y UNESCO.</p>
+                <a class="proj-link" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer">Ver proyecto <span class="proj-link-arrow">↗</span></a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+        <!-- /more-projects-wrap -->
+
       </div>
     </section>
 
@@ -798,7 +1022,7 @@
     }
     updateClock(); setInterval(updateClock,1000);
 
-    // ── THEME TOGGLE (solo cambia icono, fondo siempre pizarra) ──
+    // ── THEME TOGGLE ──
     (function(){
       const btn=document.querySelector('[data-theme-toggle]');
       if(btn) btn.setAttribute('aria-label','Pizarra activa');
@@ -838,6 +1062,40 @@
         setTimeout(()=>{fbT.textContent='Copiar email';},2200);
       });
     });
+
+    // ── FOLDER INTERACTION ──
+    (function(){
+      const stage=document.getElementById('folderStage');
+      const extra=document.getElementById('extraProjects');
+      if(!stage||!extra) return;
+
+      let open=false;
+
+      function toggleFolder(){
+        open=!open;
+        stage.classList.toggle('open',open);
+        stage.setAttribute('aria-expanded',String(open));
+        extra.classList.toggle('visible',open);
+        extra.setAttribute('aria-hidden',String(!open));
+
+        // register new cards for cursor hover
+        if(open){
+          extra.querySelectorAll('a,button,[role="button"]').forEach(el=>{
+            el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+          });
+        }
+      }
+
+      stage.addEventListener('click', toggleFolder);
+      stage.addEventListener('keydown', e=>{
+        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleFolder(); }
+      });
+
+      // cursor hover on folder
+      stage.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+      stage.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+    })();
 
     // ── SCROLL REVEAL + STAGGER ──
     const revIO=new IntersectionObserver(entries=>{
