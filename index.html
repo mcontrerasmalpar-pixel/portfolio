@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maria del Carmen Contreras</title>
-  <meta name="description" content="Maria del Carmen Contreras — product designer and developer. UX, web, AI." />
+  <meta name="description" content="Maria del Carmen Contreras — ML on Inka khipus and Southern Quechua, computer vision, and operations systems for LATAM teams. Lima, Perú." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..600;1,9..40,300..400&display=swap" rel="stylesheet">
@@ -232,6 +232,23 @@
     .link-arrow:hover { gap: .6rem; opacity: .55; }
     .link-arrow svg { transition: transform .25s var(--ease); }
     .link-arrow:hover svg { transform: translate(2px, -2px); }
+
+
+    .hero-proof {
+      font-size: var(--text-xs);
+      color: var(--muted);
+      letter-spacing: .04em;
+      margin-top: var(--space-5);
+      max-width: 62ch;
+      line-height: 1.6;
+      opacity: 0; animation: fadeUp .6s .7s var(--ease) forwards;
+    }
+    .hero-proof a {
+      color: var(--text);
+      border-bottom: 1px solid var(--faint);
+      transition: border-color var(--t), opacity var(--t);
+    }
+    .hero-proof a:hover { border-color: var(--text); opacity: .65; }
 
     /* ── SECTION COMMONS ── */
     .section-wrap {
@@ -493,18 +510,22 @@
 
     <!-- ── HERO ── -->
     <section class="hero">
-      <p class="hero-eyebrow" data-i18n="hero_eyebrow">Product design · Web · AI</p>
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">AI · NLP · STRUCTURE</p>
       <h1 class="hero-name">
-        <span class="line"><span class="line-inner" data-i18n="hero_line1">Design that</span></span>
-        <span class="line"><span class="line-inner"><em data-i18n="hero_line2">thinks.</em></span></span>
+        <span class="line"><span class="line-inner" data-i18n="hero_line1">Systems that</span></span>
+        <span class="line"><span class="line-inner"><em data-i18n="hero_line2">read structure.</em></span></span>
       </h1>
       <div class="hero-bottom">
         <p class="hero-desc" data-i18n="hero_desc">
-          Building <strong>digital products</strong> at the intersection of UX, web development, and machine learning.
+          Building machine learning on messy data — Inka khipus, Southern Quechua, computer vision — and operations systems for LATAM teams.
         </p>
         <div class="hero-cta">
           <a class="link-arrow" href="#work" data-i18n="cta_work">
             View work
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+          <a class="link-arrow" href="https://flowsbymaky.lat" target="_blank" rel="noopener noreferrer" data-i18n="cta_flows">
+            Flows by Maky
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
           </a>
           <a class="link-arrow" href="#contact" data-i18n="cta_contact">
@@ -513,6 +534,9 @@
           </a>
         </div>
       </div>
+      <p class="hero-proof" data-i18n="hero_proof">
+        Scientific poster, EEML 2026 Cetinje (fully funded) · <a href="https://arxiv.org/abs/2607.00185" target="_blank" rel="noopener noreferrer">arXiv:2607.00185</a>
+      </p>
     </section>
 
     <!-- ── WORK ── -->
@@ -529,123 +553,20 @@
         <button class="filter-btn" data-filter="cv"         data-i18n="filter_cv">Vision</button>
       </div>
 
-      <!-- 2025 -->
-      <div class="year-group reveal" data-year="2025">
-        <p class="year-label">2025</p>
+      <!-- 2026 -->
+      <div class="year-group reveal" data-year="2026">
+        <p class="year-label">2026</p>
         <div class="work-list">
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/khipu-ml" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
             <div class="work-item-left">
               <span class="work-num">01</span>
               <div class="work-title-group">
-                <span class="work-title">AymaraCorpus</span>
-                <span class="work-subtitle" data-i18n="proj1_sub">Annotated corpus · Andean languages</span>
-                <div class="work-tags">
-                  <span class="work-tag">NLP</span>
-                  <span class="work-tag" data-i18n="tag_indigenous">Indigenous languages</span>
-                  <span class="work-tag">Open source</span>
-                </div>
-              </div>
-            </div>
-            <div class="work-item-right">
-              <div class="work-thumb">🌎</div>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai ux">
-            <div class="work-item-left">
-              <span class="work-num">02</span>
-              <div class="work-title-group">
-                <span class="work-title">FlowsbyMaky Assistant</span>
-                <span class="work-subtitle" data-i18n="proj2_sub">LLM · workflow automation</span>
-                <div class="work-tags">
-                  <span class="work-tag">LLM</span>
-                  <span class="work-tag">Product</span>
-                  <span class="work-tag">Fine-tuning</span>
-                </div>
-              </div>
-            </div>
-            <div class="work-item-right">
-              <div class="work-thumb">🤖</div>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 2024 -->
-      <div class="year-group reveal" data-year="2024">
-        <p class="year-label">2024</p>
-        <div class="work-list">
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
-            <div class="work-item-left">
-              <span class="work-num">03</span>
-              <div class="work-title-group">
-                <span class="work-title">QuechuaTok</span>
-                <span class="work-subtitle" data-i18n="proj3_sub">Tokenizer · low-resource NLP</span>
-                <div class="work-tags">
-                  <span class="work-tag">NLP</span>
-                  <span class="work-tag">Quechua</span>
-                  <span class="work-tag">Research</span>
-                </div>
-              </div>
-            </div>
-            <div class="work-item-right">
-              <div class="work-thumb">🗣</div>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/Doodio" target="_blank" rel="noopener noreferrer" data-tags="web">
-            <div class="work-item-left">
-              <span class="work-num">04</span>
-              <div class="work-title-group">
-                <span class="work-title">Doodio</span>
-                <span class="work-subtitle" data-i18n="proj4_sub">Procedural melody generator</span>
-                <div class="work-tags">
-                  <span class="work-tag">Web</span>
-                  <span class="work-tag">Creative</span>
-                  <span class="work-tag">Audio</span>
-                </div>
-              </div>
-            </div>
-            <div class="work-item-right">
-              <div class="work-thumb">🎵</div>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="web ux">
-            <div class="work-item-left">
-              <span class="work-num">05</span>
-              <div class="work-title-group">
-                <span class="work-title">LatamDataMap</span>
-                <span class="work-subtitle" data-i18n="proj5_sub">Visualization · social indicators</span>
-                <div class="work-tags">
-                  <span class="work-tag">DataViz</span>
-                  <span class="work-tag">D3.js</span>
-                  <span class="work-tag">Latam</span>
-                </div>
-              </div>
-            </div>
-            <div class="work-item-right">
-              <div class="work-thumb">📊</div>
-              <span class="work-arrow">↗</span>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 2023 -->
-      <div class="year-group reveal" data-year="2023">
-        <p class="year-label">2023</p>
-        <div class="work-list">
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
-            <div class="work-item-left">
-              <span class="work-num">06</span>
-              <div class="work-title-group">
                 <span class="work-title">Khipu-ML</span>
-                <span class="work-subtitle" data-i18n="proj6_sub">Encoding inspired by Andean khipus</span>
+                <span class="work-subtitle" data-i18n="proj1_sub">Structural ML on the Open Khipu Repository. UMAP + XGBoost F1 0.86 imperial style. Poster, EEML 2026.</span>
                 <div class="work-tags">
-                  <span class="work-tag">ML</span>
                   <span class="work-tag">Research</span>
+                  <span class="work-tag">GDL</span>
+                  <span class="work-tag">arXiv</span>
                 </div>
               </div>
             </div>
@@ -654,12 +575,71 @@
               <span class="work-arrow">↗</span>
             </div>
           </a>
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="cv ux">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/QuechuaTok" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
             <div class="work-item-left">
-              <span class="work-num">07</span>
+              <span class="work-num">02</span>
+              <div class="work-title-group">
+                <span class="work-title">QuechuaTok</span>
+                <span class="work-subtitle" data-i18n="proj2_sub">Morphological tokenization. PRPE 83.33% vs BPE 6.67%.</span>
+                <div class="work-tags">
+                  <span class="work-tag">NLP</span>
+                  <span class="work-tag">Quechua</span>
+                  <span class="work-tag">arXiv</span>
+                </div>
+              </div>
+            </div>
+            <div class="work-item-right">
+              <div class="work-thumb">🗣</div>
+              <span class="work-arrow">↗</span>
+            </div>
+          </a>
+          <a class="work-item" href="https://flowsbymaky.lat" target="_blank" rel="noopener noreferrer" data-tags="web ux">
+            <div class="work-item-left">
+              <span class="work-num">03</span>
+              <div class="work-title-group">
+                <span class="work-title">Flows by Maky</span>
+                <span class="work-subtitle" data-i18n="proj3_sub">Automations, dashboards, web for LATAM ops.</span>
+                <div class="work-tags">
+                  <span class="work-tag">n8n</span>
+                  <span class="work-tag">Product</span>
+                </div>
+              </div>
+            </div>
+            <div class="work-item-right">
+              <div class="work-thumb">⚙️</div>
+              <span class="work-arrow">↗</span>
+            </div>
+          </a>
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/teampulse" target="_blank" rel="noopener noreferrer" data-tags="ai web">
+            <div class="work-item-left">
+              <span class="work-num">04</span>
+              <div class="work-title-group">
+                <span class="work-title">TeamPulse</span>
+                <span class="work-subtitle" data-i18n="proj4_sub">Drop in a meeting transcript. Get decisions, tasks, and blockers.</span>
+                <div class="work-tags">
+                  <span class="work-tag">Product</span>
+                  <span class="work-tag">LLM</span>
+                </div>
+              </div>
+            </div>
+            <div class="work-item-right">
+              <div class="work-thumb">📋</div>
+              <span class="work-arrow">↗</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2025 -->
+      <div class="year-group reveal" data-year="2025">
+        <p class="year-label">2025</p>
+        <div class="work-list">
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/text-barrier-detector" target="_blank" rel="noopener noreferrer" data-tags="cv ux">
+            <div class="work-item-left">
+              <span class="work-num">05</span>
               <div class="work-title-group">
                 <span class="work-title">Text Barrier Detector</span>
-                <span class="work-subtitle" data-i18n="proj7_sub">Visual accessibility · computer vision</span>
+                <span class="work-subtitle" data-i18n="proj5_sub">Visual accessibility · computer vision</span>
                 <div class="work-tags">
                   <span class="work-tag">CV</span>
                   <span class="work-tag" data-i18n="tag_access">Accessibility</span>
@@ -672,16 +652,50 @@
               <span class="work-arrow">↗</span>
             </div>
           </a>
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai cv">
+          <a class="work-item" href="https://doodio-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" data-tags="web">
+            <div class="work-item-left">
+              <span class="work-num">06</span>
+              <div class="work-title-group">
+                <span class="work-title">Doodio / PuntoPixel</span>
+                <span class="work-subtitle" data-i18n="proj6_sub">Doodle-to-music gallery and a cross-stitch pattern maker.</span>
+                <div class="work-tags">
+                  <span class="work-tag">Web</span>
+                  <span class="work-tag">Creative</span>
+                </div>
+              </div>
+            </div>
+            <div class="work-item-right">
+              <div class="work-thumb">🎵</div>
+              <span class="work-arrow">↗</span>
+            </div>
+          </a>
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
+            <div class="work-item-left">
+              <span class="work-num">07</span>
+              <div class="work-title-group">
+                <span class="work-title">AymaraCorpus</span>
+                <span class="work-subtitle" data-i18n="proj7_sub">Annotated corpus · Andean languages</span>
+                <div class="work-tags">
+                  <span class="work-tag">NLP</span>
+                  <span class="work-tag" data-i18n="tag_indigenous">Indigenous languages</span>
+                  <span class="work-tag">Open source</span>
+                </div>
+              </div>
+            </div>
+            <div class="work-item-right">
+              <div class="work-thumb">🌎</div>
+              <span class="work-arrow">↗</span>
+            </div>
+          </a>
+          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/MRI-brain-tumor" target="_blank" rel="noopener noreferrer" data-tags="ai cv">
             <div class="work-item-left">
               <span class="work-num">08</span>
               <div class="work-title-group">
-                <span class="work-title">Brain Tumor Classification</span>
+                <span class="work-title">Brain Tumor CNN</span>
                 <span class="work-subtitle" data-i18n="proj8_sub">CNN · ResNet · 94% accuracy</span>
                 <div class="work-tags">
                   <span class="work-tag">Deep Learning</span>
                   <span class="work-tag">Medical AI</span>
-                  <span class="work-tag">Transfer learning</span>
                 </div>
               </div>
             </div>
@@ -699,13 +713,16 @@
       <div class="about-grid">
         <div class="reveal">
           <h2 class="about-headline" data-i18n="about_headline">
-            Where design<br>meets <em>intelligence.</em>
+            I started in UX and frontend.
           </h2>
           <p class="about-body" data-i18n="about_p1">
-            I'm a <strong>product designer and developer</strong> focused on AI, UX, and digital systems. I'm interested in building interfaces that think, that are accessible, and that solve real problems.
+            I now build <strong>ML pipelines</strong>, low-resource NLP, and agentic workflows.
           </p>
           <p class="about-body" data-i18n="about_p2">
-            I work at the intersection of applied research and practical design: from NLP for indigenous languages to interactive web tools.
+            Presented Inka khipus at EEML 2026. Writing the next paper on khipus as graphs.
+          </p>
+          <p class="about-body" data-i18n="about_p3">
+            Flows by Maky is the practice: I design, code, and ship the system myself.
           </p>
           <div class="skills-wrap">
             <span class="skill">Product Design</span>
@@ -729,7 +746,7 @@
           </div>
           <div class="about-row">
             <span class="about-row-label" data-i18n="row_avail">Availability</span>
-            <span class="about-row-val" data-i18n="row_avail_val">Open to work</span>
+            <span class="about-row-val" data-i18n="row_avail_val">Open to remote research / builds</span>
           </div>
           <div class="about-row">
             <span class="about-row-label" data-i18n="row_langs">Languages</span>
@@ -737,7 +754,7 @@
           </div>
           <div class="about-row">
             <span class="about-row-label" data-i18n="row_focus">Focus</span>
-            <span class="about-row-val">AI product · Research</span>
+            <span class="about-row-val">Research · LATAM ops</span>
           </div>
           <!-- ── NEW: Programs row ── -->
           <div class="about-row">
@@ -789,11 +806,13 @@
         nav_about:       'About',
         nav_contact:     'Contact',
         weather:         'probably sunny',
-        hero_eyebrow:    'Product design · Web · AI',
-        hero_line1:      'Design that',
-        hero_line2:      'thinks.',
-        hero_desc:       'Building <strong>digital products</strong> at the intersection of UX, web development, and machine learning.',
+        hero_eyebrow:    'AI · NLP · STRUCTURE',
+        hero_line1:      'Systems that',
+        hero_line2:      'read structure.',
+        hero_desc:       'Building machine learning on messy data — Inka khipus, Southern Quechua, computer vision — and operations systems for LATAM teams.',
+        hero_proof:      'Scientific poster, EEML 2026 Cetinje (fully funded) · <a href="https://arxiv.org/abs/2607.00185" target="_blank" rel="noopener noreferrer">arXiv:2607.00185</a>',
         cta_work:        'View work',
+        cta_flows:       'Flows by Maky',
         cta_contact:     "Let's talk",
         work_selected:   'selected',
         work_count:      '08 projects',
@@ -802,23 +821,24 @@
         filter_web:      'Web',
         filter_ux:       'UX',
         filter_cv:       'Vision',
-        proj1_sub:       'Annotated corpus · Andean languages',
+        proj1_sub:       'Structural ML on the Open Khipu Repository. UMAP + XGBoost F1 0.86 imperial style. Poster, EEML 2026.',
         tag_indigenous:  'Indigenous languages',
-        proj2_sub:       'LLM · workflow automation',
-        proj3_sub:       'Tokenizer · low-resource NLP',
-        proj4_sub:       'Procedural melody generator',
-        proj5_sub:       'Visualization · social indicators',
-        proj6_sub:       'Encoding inspired by Andean khipus',
-        proj7_sub:       'Visual accessibility · computer vision',
+        proj2_sub:       'Morphological tokenization. PRPE 83.33% vs BPE 6.67%.',
+        proj3_sub:       'Automations, dashboards, web for LATAM ops.',
+        proj4_sub:       'Drop in a meeting transcript. Get decisions, tasks, and blockers.',
+        proj5_sub:       'Visual accessibility · computer vision',
+        proj6_sub:       'Doodle-to-music gallery and a cross-stitch pattern maker.',
+        proj7_sub:       'Annotated corpus · Andean languages',
         tag_access:      'Accessibility',
         proj8_sub:       'CNN · ResNet · 94% accuracy',
-        about_headline:  'Where design<br>meets <em>intelligence.</em>',
-        about_p1:        "I'm a <strong>product designer and developer</strong> focused on AI, UX, and digital systems. I'm interested in building interfaces that think, that are accessible, and that solve real problems.",
-        about_p2:        'I work at the intersection of applied research and practical design: from NLP for indigenous languages to interactive web tools.',
+        about_headline:  'I started in UX and frontend.',
+        about_p1:        'I now build <strong>ML pipelines</strong>, low-resource NLP, and agentic workflows.',
+        about_p2:        'Presented Inka khipus at EEML 2026. Writing the next paper on khipus as graphs.',
+        about_p3:        'Flows by Maky is the practice: I design, code, and ship the system myself.',
         row_location:    'Location',
         row_current:     'Currently',
         row_avail:       'Availability',
-        row_avail_val:   'Open to work',
+        row_avail_val:   'Open to remote research / builds',
         row_langs:       'Languages',
         row_focus:       'Focus',
         row_programs:    'Programs',
@@ -833,11 +853,13 @@
         nav_about:       'Sobre mí',
         nav_contact:     'Contacto',
         weather:         'probablemente soleado',
-        hero_eyebrow:    'Diseño de producto · Web · IA',
-        hero_line1:      'Diseño que',
-        hero_line2:      'piensa.',
-        hero_desc:       'Creando <strong>productos digitales</strong> en la intersección de UX, desarrollo web e inteligencia artificial.',
+        hero_eyebrow:    'IA · NLP · ESTRUCTURA',
+        hero_line1:      'Sistemas que',
+        hero_line2:      'leen estructura.',
+        hero_desc:       'Machine learning sobre datos desordenados — khipus inka, quechua sureño, computer vision — y sistemas de operaciones para equipos LATAM.',
+        hero_proof:      'Póster científico, EEML 2026 Cetinje (fully funded) · <a href="https://arxiv.org/abs/2607.00185" target="_blank" rel="noopener noreferrer">arXiv:2607.00185</a>',
         cta_work:        'Ver trabajo',
+        cta_flows:       'Flows by Maky',
         cta_contact:     'Hablemos',
         work_selected:   'seleccionado',
         work_count:      '08 proyectos',
@@ -846,23 +868,24 @@
         filter_web:      'Web',
         filter_ux:       'UX',
         filter_cv:       'Visión',
-        proj1_sub:       'Corpus anotado · lenguas andinas',
+        proj1_sub:       'ML estructural sobre el Open Khipu Repository. UMAP + XGBoost F1 0.86 estilo imperial. Póster, EEML 2026.',
         tag_indigenous:  'Lenguas indígenas',
-        proj2_sub:       'LLM · automatización de flujos',
-        proj3_sub:       'Tokenizador · NLP bajo recurso',
-        proj4_sub:       'Generador de melodías procedurales',
-        proj5_sub:       'Visualización · indicadores sociales',
-        proj6_sub:       'Codificación inspirada en khipus andinos',
-        proj7_sub:       'Accesibilidad visual · computer vision',
+        proj2_sub:       'Tokenización morfológica. PRPE 83.33% vs BPE 6.67%.',
+        proj3_sub:       'Automatizaciones, dashboards y web para operaciones LATAM.',
+        proj4_sub:       'Pegas una transcripción de reunión. Sales con decisiones, tareas y blockers.',
+        proj5_sub:       'Accesibilidad visual · computer vision',
+        proj6_sub:       'Galería doodle-a-música y un generador de patrones de punto cruz.',
+        proj7_sub:       'Corpus anotado · lenguas andinas',
         tag_access:      'Accesibilidad',
         proj8_sub:       'CNN · ResNet · 94% precisión',
-        about_headline:  'Donde el diseño<br>se encuentra con la <em>inteligencia.</em>',
-        about_p1:        'Soy <strong>diseñadora de producto y desarrolladora</strong> con foco en IA, UX y sistemas digitales. Me interesa construir interfaces que piensen, que sean accesibles y que resuelvan problemas reales.',
-        about_p2:        'Trabajo en la intersección de investigación aplicada y diseño práctico: desde NLP para lenguas indígenas hasta herramientas web interactivas.',
+        about_headline:  'Empecé en UX y frontend.',
+        about_p1:        'Ahora construyo <strong>pipelines de ML</strong>, NLP de bajo recurso y flujos agentic.',
+        about_p2:        'Presenté khipus inka en EEML 2026. Escribo el siguiente paper sobre khipus como grafos.',
+        about_p3:        'Flows by Maky es la práctica: diseño, programo y entrego el sistema yo.',
         row_location:    'Ubicación',
         row_current:     'Actualmente',
         row_avail:       'Disponibilidad',
-        row_avail_val:   'Disponible',
+        row_avail_val:   'Abierta a research / builds remotos',
         row_langs:       'Idiomas',
         row_focus:       'Foco actual',
         row_programs:    'Programas',
@@ -912,7 +935,7 @@
 
     // ── ACTIVE NAV ──
     const secs=document.querySelectorAll('main section[id]');
-    const nls=document.querySelectorAll('.nav-link[data-nav]');
+    const nls=document.querySelectorAll('.lang-link[data-nav]');
     const io=new IntersectionObserver(entries=>{
       entries.forEach(e=>{
         if(e.isIntersecting){
