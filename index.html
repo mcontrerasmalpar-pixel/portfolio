@@ -364,6 +364,98 @@
     }
     .work-item:hover .work-thumb { opacity: 1; transform: scale(1); }
 
+
+    /* ── PROJECT DETAIL ── */
+    .project-overlay {
+      position: fixed; inset: 0; z-index: 80;
+      background: var(--bg);
+      overflow: auto;
+      padding: 5.5rem clamp(1.2rem, 4vw, 3rem) 3rem;
+    }
+    .project-overlay[hidden] { display: none; }
+    body.overlay-open { overflow: hidden; }
+    .project-close {
+      position: fixed; top: 1.2rem; right: clamp(1.2rem, 4vw, 3rem);
+      z-index: 81;
+      width: 2.4rem; height: 2.4rem;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      font-size: 1.4rem; line-height: 1;
+      color: var(--text);
+    }
+    .project-close:hover { background: var(--surface); }
+    .project-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(16rem, 0.85fr);
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      align-items: start;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    .project-media {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      min-height: 240px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .project-media.is-empty { display: none; }
+    .project-stage {
+      display: flex; align-items: center; justify-content: center;
+      background: #111110;
+      min-height: 280px;
+      max-height: 70svh;
+    }
+    .project-stage img, .project-stage video {
+      width: 100%; height: auto; max-height: 70svh;
+      object-fit: contain;
+      display: block;
+    }
+    .project-thumbs {
+      display: flex; gap: .4rem; flex-wrap: wrap;
+      padding: .7rem;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .project-thumbs[hidden] { display: none; }
+    .project-thumb-btn {
+      width: 64px; height: 44px; padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 3px; overflow: hidden;
+      background: var(--surface);
+    }
+    .project-thumb-btn.active { border-color: var(--text); }
+    .project-thumb-btn img, .project-thumb-btn video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .project-copy { padding-top: .2rem; }
+    .project-kind {
+      font-size: var(--text-xs);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--space-4);
+    }
+    .project-detail-title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      margin-bottom: var(--space-5);
+    }
+    .project-detail-desc {
+      font-size: var(--text-md);
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: var(--space-8);
+    }
+    @media(max-width: 860px) {
+      .project-layout { grid-template-columns: 1fr; }
+      .project-stage { min-height: 180px; max-height: 50svh; }
+    }
+
     /* ── ABOUT ── */
     .about-grid {
       display: grid;
@@ -557,7 +649,7 @@
       <div class="year-group reveal" data-year="2026">
         <p class="year-label">2026</p>
         <div class="work-list">
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/khipu-ml" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
+          <a class="work-item" href="#project-khipu" data-project="khipu" data-tags="ai nlp">
             <div class="work-item-left">
               <span class="work-num">01</span>
               <div class="work-title-group">
@@ -575,7 +667,7 @@
               <span class="work-arrow">↗</span>
             </div>
           </a>
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/QuechuaTok" target="_blank" rel="noopener noreferrer" data-tags="ai nlp">
+          <a class="work-item" href="#project-quechua" data-project="quechua" data-tags="ai nlp">
             <div class="work-item-left">
               <span class="work-num">02</span>
               <div class="work-title-group">
@@ -593,7 +685,7 @@
               <span class="work-arrow">↗</span>
             </div>
           </a>
-          <a class="work-item" href="https://flowsbymaky.lat" target="_blank" rel="noopener noreferrer" data-tags="web ux">
+          <a class="work-item" href="#project-flows" data-project="flows" data-tags="web ux">
             <div class="work-item-left">
               <span class="work-num">03</span>
               <div class="work-title-group">
@@ -610,7 +702,7 @@
               <span class="work-arrow">↗</span>
             </div>
           </a>
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/teampulse" target="_blank" rel="noopener noreferrer" data-tags="ai web">
+          <a class="work-item" href="#project-teampulse" data-project="teampulse" data-tags="ai web">
             <div class="work-item-left">
               <span class="work-num">04</span>
               <div class="work-title-group">
@@ -634,7 +726,7 @@
       <div class="year-group reveal" data-year="2025">
         <p class="year-label">2025</p>
         <div class="work-list">
-          <a class="work-item" href="https://github.com/mcontrerasmalpar-pixel/text-barrier-detector" target="_blank" rel="noopener noreferrer" data-tags="cv ux">
+          <a class="work-item" href="#project-barrier" data-project="barrier" data-tags="cv ux">
             <div class="work-item-left">
               <span class="work-num">05</span>
               <div class="work-title-group">
@@ -652,7 +744,7 @@
               <span class="work-arrow">↗</span>
             </div>
           </a>
-          <a class="work-item" href="https://doodio-alpha.vercel.app/" target="_blank" rel="noopener noreferrer" data-tags="web">
+          <a class="work-item" href="#project-doodio" data-project="doodio" data-tags="web">
             <div class="work-item-left">
               <span class="work-num">06</span>
               <div class="work-title-group">
@@ -759,6 +851,23 @@
       </div>
     </section>
 
+
+    <div id="project-overlay" class="project-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="projectDetailTitle">
+      <button class="project-close" id="projectClose" type="button" aria-label="Close">×</button>
+      <div class="project-layout">
+        <div class="project-media" id="projectMedia"></div>
+        <div class="project-copy">
+          <p class="project-kind" id="projectKind"></p>
+          <h2 class="project-detail-title" id="projectDetailTitle"></h2>
+          <p class="project-detail-desc" id="projectDetailDesc"></p>
+          <a class="link-arrow" id="projectDetailLink" target="_blank" rel="noopener noreferrer">
+            <span id="projectDetailLinkText"></span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <script>
@@ -809,6 +918,10 @@
         row_programs:    'Programs',
         footer_headline: "Let's<br><em>talk.</em>",
         footer_copy:     '© 2026 Maria del Carmen Contreras · Designed with intention ✦',
+        overlay_close:   'Close',
+        overlay_link:    'Open project',
+        overlay_foto:    'Photo',
+        overlay_video:   'Video',
         copied:          '✓ Copied!',
       },
       es: {
@@ -856,6 +969,10 @@
         row_programs:    'Programas',
         footer_headline: 'Hablemos.<br><em>✦</em>',
         footer_copy:     '© 2026 Maria del Carmen Contreras · Diseñado con intención ✦',
+        overlay_close:   'Cerrar',
+        overlay_link:    'Abrir proyecto',
+        overlay_foto:    'Foto',
+        overlay_video:   'Video',
         copied:          '✓ ¡Copiado!',
       }
     };
@@ -954,6 +1071,177 @@
       });
     },{threshold:.06});
     document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
+
+
+    // ── PROJECT DETAIL ──
+    const PROJECTS = {
+      khipu: {
+        title: 'Khipu-ML',
+        link: 'https://github.com/mcontrerasmalpar-pixel/khipu-ml',
+        desc: {
+          en: 'Structural ML on the Open Khipu Repository. UMAP + HDBSCAN cluster the cords; XGBoost detects imperial style at F1 0.86. Scientific poster, EEML 2026 Cetinje. Paper: arXiv:2607.00185.',
+          es: 'ML estructural sobre el Open Khipu Repository. UMAP + HDBSCAN agrupan las cuerdas; XGBoost detecta el estilo imperial con F1 0.86. Póster científico, EEML 2026 Cetinje. Paper: arXiv:2607.00185.'
+        },
+        media: [
+          { type: 'image', src: 'khipu01.png', alt: 'UMAP clusters vs geographic region' },
+          { type: 'image', src: 'khipu02.png', alt: 'Khipu-ML second figure' }
+        ]
+      },
+      quechua: {
+        title: 'QuechuaTok',
+        link: 'https://github.com/mcontrerasmalpar-pixel/QuechuaTok',
+        desc: {
+          en: 'Morphological tokenization for Southern Quechua. PRPE hits 83.33% MorphAcc against 6.67% for BPE on the gold set. Installable Python package.',
+          es: 'Tokenización morfológica para quechua sureño. PRPE llega a 83.33% MorphAcc frente a 6.67% de BPE en el set gold. Paquete Python instalable.'
+        },
+        media: [
+          { type: 'image', src: 'quechuaqualitative.png', alt: 'QuechuaTok qualitative figure' },
+          { type: 'image', src: 'quechuaquantitative.png', alt: 'QuechuaTok quantitative figure' }
+        ]
+      },
+      flows: {
+        title: 'Flows by Maky',
+        link: 'https://flowsbymaky.lat',
+        desc: {
+          en: 'Automations, dashboards, and web for LATAM ops. n8n and custom Python, designed, coded, and shipped by one person.',
+          es: 'Automatizaciones, dashboards y web para operaciones LATAM. n8n y Python a medida; diseño, código y entrega por una sola persona.'
+        },
+        media: []
+      },
+      teampulse: {
+        title: 'TeamPulse',
+        link: 'https://mcontrerasmalpar-pixel.github.io/Teampulse/',
+        desc: {
+          en: 'Drop in a meeting transcript. Get back decisions, tasks, and blockers. CLI and MCP server; Gemini, Claude, GPT-4, Mistral, or local Ollama.',
+          es: 'Pegas una transcripción de reunión. Sales con decisiones, tareas y blockers. CLI y servidor MCP; Gemini, Claude, GPT-4, Mistral u Ollama local.'
+        },
+        media: [
+          { type: 'image', src: 'teampulse.png', alt: 'TeamPulse landing page' }
+        ]
+      },
+      barrier: {
+        title: 'Text Barrier Detector',
+        link: 'https://github.com/mcontrerasmalpar-pixel/text-barrier-detector',
+        desc: {
+          en: 'Computer vision for visual accessibility: detect text that is hard to read in the real world.',
+          es: 'Computer vision para accesibilidad visual: detectar texto difícil de leer en el mundo real.'
+        },
+        media: [
+          { type: 'video', src: 'TextBarrier.mp4', alt: 'Text Barrier Detector demo' }
+        ]
+      },
+      doodio: {
+        title: 'Doodio / PuntoPixel',
+        link: 'https://doodio-alpha.vercel.app/',
+        desc: {
+          en: 'Doodio turns a drawing into sound. PuntoPixel is a numbered-grid cross-stitch maker. Same creative-tool thread.',
+          es: 'Doodio convierte un dibujo en sonido. PuntoPixel es un generador de punto cruz con grilla numerada. Misma línea de herramientas creativas.'
+        },
+        media: [
+          { type: 'video', src: 'doodio.mp4', alt: 'Doodio demo' }
+        ]
+      }
+    };
+
+    const overlay = document.getElementById('project-overlay');
+    const mediaEl = document.getElementById('projectMedia');
+    const kindEl = document.getElementById('projectKind');
+    const titleEl = document.getElementById('projectDetailTitle');
+    const descEl = document.getElementById('projectDetailDesc');
+    const linkEl = document.getElementById('projectDetailLink');
+    const linkTextEl = document.getElementById('projectDetailLinkText');
+    const closeBtn = document.getElementById('projectClose');
+    let activeMedia = 0;
+    let activeProject = null;
+
+    function mediaKind(item) {
+      const t = i18n[currentLang] || i18n.en;
+      return item.type === 'video' ? t.overlay_video : t.overlay_foto;
+    }
+
+    function renderStage(project, index) {
+      const item = project.media[index];
+      if (!item) return;
+      const stage = mediaEl.querySelector('.project-stage');
+      if (!stage) return;
+      if (item.type === 'video') {
+        stage.innerHTML = `<video controls playsinline preload="metadata" src="${item.src}" aria-label="${item.alt || ''}"></video>`;
+      } else {
+        stage.innerHTML = `<img src="${item.src}" alt="${item.alt || ''}">`;
+      }
+      kindEl.textContent = mediaKind(item);
+      mediaEl.querySelectorAll('.project-thumb-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+      });
+      activeMedia = index;
+    }
+
+    function openProject(id) {
+      const project = PROJECTS[id];
+      if (!project) return;
+      activeProject = id;
+      const t = i18n[currentLang] || i18n.en;
+      titleEl.textContent = project.title;
+      descEl.textContent = project.desc[currentLang] || project.desc.en;
+      linkEl.href = project.link;
+      linkTextEl.textContent = t.overlay_link;
+      closeBtn.setAttribute('aria-label', t.overlay_close);
+
+      if (!project.media.length) {
+        mediaEl.classList.add('is-empty');
+        mediaEl.innerHTML = '';
+        kindEl.textContent = '';
+      } else {
+        mediaEl.classList.remove('is-empty');
+        const thumbs = project.media.length > 1
+          ? `<div class="project-thumbs">${project.media.map((m, i) => {
+              const inner = m.type === 'video'
+                ? `<video src="${m.src}" muted></video>`
+                : `<img src="${m.src}" alt="">`;
+              return `<button type="button" class="project-thumb-btn${i===0?' active':''}" data-i="${i}" aria-label="${m.alt || ''}">${inner}</button>`;
+            }).join('')}</div>`
+          : `<div class="project-thumbs" hidden></div>`;
+        mediaEl.innerHTML = `<div class="project-stage"></div>${thumbs}`;
+        renderStage(project, 0);
+        mediaEl.querySelectorAll('.project-thumb-btn').forEach(btn => {
+          btn.addEventListener('click', () => renderStage(project, Number(btn.dataset.i)));
+        });
+      }
+
+      overlay.hidden = false;
+      document.body.classList.add('overlay-open');
+      closeBtn.focus();
+      if (location.hash !== '#project-' + id) history.replaceState(null, '', '#project-' + id);
+    }
+
+    function closeProject() {
+      overlay.hidden = true;
+      document.body.classList.remove('overlay-open');
+      mediaEl.querySelectorAll('video').forEach(v => { v.pause(); });
+      activeProject = null;
+      if (location.hash.startsWith('#project-')) history.replaceState(null, '', location.pathname + location.search);
+    }
+
+    document.querySelectorAll('.work-item[data-project]').forEach(item => {
+      item.addEventListener('click', e => {
+        e.preventDefault();
+        openProject(item.dataset.project);
+      });
+    });
+    closeBtn.addEventListener('click', closeProject);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeProject(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !overlay.hidden) closeProject(); });
+
+    const origApplyLang = applyLang;
+    applyLang = function(lang) {
+      origApplyLang(lang);
+      if (activeProject) openProject(activeProject);
+    };
+
+    if (location.hash.startsWith('#project-')) {
+      openProject(location.hash.replace('#project-', ''));
+    }
+
 
     // ── CUSTOM CURSOR ──
     const cur=document.getElementById('cursor');
