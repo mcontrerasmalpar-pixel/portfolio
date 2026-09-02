@@ -308,7 +308,7 @@
           es: 'Computer vision para accesibilidad visual: detectar texto difícil de leer en el mundo real.'
         },
         media: [
-          { type: 'video', src: 'TextBarrier.mp4', alt: 'Text Barrier Detector demo' }
+          { type: 'video', src: 'TextBarrier.mp4', alt: 'Text Barrier Detector demo', silent: true }
         ]
       },
       doodio: {
@@ -323,7 +323,7 @@
           es: 'Dibuja y lo oyes como música. Galería de doodles con Web Audio.'
         },
         media: [
-          { type: 'video', src: 'doodio.mp4', alt: 'Doodio demo' }
+          { type: 'video', src: 'doodio.mp4', alt: 'Doodio demo', silent: false }
         ]
       }
     };
@@ -348,7 +348,19 @@
       const stage = mediaEl.querySelector('.project-stage');
       if (!stage) return;
       if (item.type === 'video') {
-        stage.innerHTML = '<video controls playsinline muted preload="metadata" src="' + item.src + '" aria-label="' + (item.alt || '') + '"></video>';
+        const silent = item.silent !== false && item.silent;
+        const muteAttr = silent ? ' muted' : '';
+        stage.innerHTML = '<video controls playsinline preload="metadata"' + muteAttr + ' src="' + item.src + '" aria-label="' + (item.alt || '') + '"></video>';
+        const vid = stage.querySelector('video');
+        if (vid && silent) {
+          vid.muted = true;
+          vid.defaultMuted = true;
+          vid.volume = 0;
+          vid.addEventListener('volumechange', function() {
+            vid.muted = true;
+            vid.volume = 0;
+          });
+        }
       } else {
         stage.innerHTML = '<img src="' + item.src + '" alt="' + (item.alt || '') + '">';
       }
