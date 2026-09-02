@@ -61,7 +61,7 @@
       body, button { cursor: auto; }
     }
 
-    /* ── CUSTOM CURSOR ── */
+    /* CUSTOM CURSOR */
     #cursor {
       position: fixed; width: 7px; height: 7px;
       background: var(--text); border-radius: 50%;
@@ -79,7 +79,6 @@
     body.cursor-hover #cursor-ring { opacity: 0; }
     @media(hover: none) { #cursor, #cursor-ring { display: none; } body, button { cursor: auto; } }
 
-    /* ── SKIP ── */
     .skip-link {
       position: absolute; left: 1rem; top: -4rem;
       background: var(--text); color: var(--bg);
@@ -88,7 +87,6 @@
     }
     .skip-link:focus { top: 1rem; }
 
-    /* ── HEADER ── */
     .site-header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 40;
       padding: 1.4rem 0;
@@ -154,7 +152,6 @@
       text-transform: uppercase;
     }
 
-    /* ── LANG SWITCHER ── */
     .lang-switcher {
       display: flex; align-items: center; gap: 0;
       border: 1px solid var(--border);
@@ -174,7 +171,6 @@
     .lang-btn:hover:not(.active) { background: var(--surface); color: var(--text); }
     .lang-divider { width: 1px; height: 14px; background: var(--border); flex-shrink: 0; }
 
-    /* ── HERO ── */
     .hero {
       min-height: 100svh;
       display: flex; flex-direction: column; justify-content: flex-end;
@@ -233,7 +229,6 @@
     .link-arrow svg { transition: transform .25s var(--ease); }
     .link-arrow:hover svg { transform: translate(2px, -2px); }
 
-
     .hero-proof {
       font-size: var(--text-xs);
       color: var(--muted);
@@ -250,7 +245,6 @@
     }
     .hero-proof a:hover { border-color: var(--text); opacity: .65; }
 
-    /* ── SECTION COMMONS ── */
     .section-wrap {
       padding: clamp(3.5rem, 8vw, 6rem) clamp(1.2rem, 4vw, 3rem);
       border-top: 1px solid var(--border);
@@ -269,7 +263,6 @@
     .section-title em { font-style: italic; color: var(--muted); }
     .section-count { font-size: var(--text-xs); color: var(--faint); letter-spacing: .1em; }
 
-    /* ── FILTERS ── */
     .filters {
       display: flex; align-items: center; gap: .35rem;
       flex-wrap: wrap; margin-bottom: clamp(2rem, 4vw, 3rem);
@@ -287,7 +280,6 @@
     .filter-btn:hover { background: var(--surface); color: var(--text); }
     .filter-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
 
-    /* ── WORK YEAR GROUP ── */
     .year-group { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
     .year-label {
       font-size: var(--text-xs);
@@ -299,7 +291,6 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* ── WORK LIST ── */
     .work-list { display: flex; flex-direction: column; }
     .work-item {
       display: grid;
@@ -341,7 +332,7 @@
     .work-subtitle { font-size: var(--text-xs); color: var(--muted); letter-spacing: .04em; }
     .work-tags { display: flex; gap: .3rem; flex-wrap: wrap; margin-top: .3rem; }
     .work-tag { font-size: var(--text-xs); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
-    .work-tag + .work-tag::before { content: '·'; margin-right: .3rem; color: var(--faint); }
+    .work-tag + .work-tag::before { content: '\00b7'; margin-right: .3rem; color: var(--faint); }
     .work-item-right { display: flex; align-items: center; gap: var(--space-5); flex-shrink: 0; }
     .work-arrow {
       font-size: var(--text-sm);
@@ -364,8 +355,6 @@
     }
     .work-item:hover .work-thumb { opacity: 1; transform: scale(1); }
 
-
-    /* ── PROJECT DETAIL ── */
     .project-overlay {
       position: fixed; inset: 0; z-index: 80;
       background: var(--bg);
@@ -456,7 +445,6 @@
       .project-stage { min-height: 180px; max-height: 50svh; }
     }
 
-    /* ── ABOUT ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -492,8 +480,6 @@
     .about-row:first-child { border-top: 1px solid var(--border); }
     .about-row-label { color: var(--muted); flex-shrink: 0; }
     .about-row-val { color: var(--text); font-weight: 500; text-align: right; }
-
-    /* Programs row: links inside val */
     .about-row-val a {
       color: var(--text);
       border-bottom: 1px solid var(--faint);
@@ -514,7 +500,6 @@
     }
     .skill:hover { color: var(--text); border-color: var(--text); }
 
-    /* ── FOOTER ── */
     .footer-wrap {
       padding: clamp(4rem, 10vw, 8rem) clamp(1.2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem);
       border-top: 1px solid var(--border);
@@ -547,11 +532,9 @@
     }
     .copy-inline:hover { color: var(--text); border-color: var(--text); }
 
-    /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── RESPONSIVE ── */
     @media(max-width: 860px) {
       .nav { grid-template-columns: 1fr auto; }
       .nav-center { display: none; }
@@ -573,7 +556,6 @@
   <div id="cursor-ring" aria-hidden="true"></div>
   <a class="skip-link" href="#content" data-i18n="skip">Skip to content</a>
 
-  <!-- ── HEADER ── -->
   <header class="site-header" id="top">
     <nav class="nav" aria-label="Main navigation">
       <div class="nav-left">
@@ -599,8 +581,6 @@
   </header>
 
   <main id="content">
-
-    <!-- ── HERO ── -->
     <section class="hero">
       <p class="hero-eyebrow" data-i18n="hero_eyebrow">AI · NLP · STRUCTURE</p>
       <h1 class="hero-name">
@@ -631,7 +611,6 @@
       </p>
     </section>
 
-    <!-- ── WORK ── -->
     <section class="section-wrap" id="work">
       <div class="section-header reveal">
         <h2 class="section-title">Work <em data-i18n="work_selected">selected</em></h2>
@@ -645,7 +624,6 @@
         <button class="filter-btn" data-filter="cv"         data-i18n="filter_cv">Vision</button>
       </div>
 
-      <!-- 2026 -->
       <div class="year-group reveal" data-year="2026">
         <p class="year-label">2026</p>
         <div class="work-list">
@@ -722,7 +700,6 @@
         </div>
       </div>
 
-      <!-- 2025 -->
       <div class="year-group reveal" data-year="2025">
         <p class="year-label">2025</p>
         <div class="work-list">
@@ -748,7 +725,7 @@
             <div class="work-item-left">
               <span class="work-num">06</span>
               <div class="work-title-group">
-                <span class="work-title">Doodio / PuntoPixel</span>
+                <span class="work-title">Doodio</span>
                 <span class="work-subtitle" data-i18n="proj6_sub">Doodle-to-music gallery and a cross-stitch pattern maker.</span>
                 <div class="work-tags">
                   <span class="work-tag">Web</span>
@@ -765,7 +742,6 @@
       </div>
     </section>
 
-    <!-- ── ABOUT ── -->
     <section class="section-wrap" id="about">
       <div class="about-grid">
         <div class="reveal">
@@ -813,7 +789,6 @@
             <span class="about-row-label" data-i18n="row_focus">Focus</span>
             <span class="about-row-val">Research · LATAM ops</span>
           </div>
-          <!-- ── NEW: Programs row ── -->
           <div class="about-row">
             <span class="about-row-label" data-i18n="row_programs">Programs</span>
             <span class="about-row-val">
@@ -828,7 +803,6 @@
       </div>
     </section>
 
-    <!-- ── CONTACT ── -->
     <section class="footer-wrap" id="contact">
       <h2 class="footer-headline reveal" data-i18n="footer_headline">
         Let's<br><em>talk.</em>
@@ -851,7 +825,6 @@
       </div>
     </section>
 
-
     <div id="project-overlay" class="project-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="projectDetailTitle">
       <button class="project-close" id="projectClose" type="button" aria-label="Close">×</button>
       <div class="project-layout">
@@ -867,11 +840,9 @@
         </div>
       </div>
     </div>
-
   </main>
 
   <script>
-    // ── TRANSLATIONS ──
     const i18n = {
       en: {
         skip:            'Skip to content',
@@ -901,7 +872,7 @@
         proj3_sub:       'Automations, dashboards, web for LATAM ops.',
         proj4_sub:       'Drop in a meeting transcript. Get decisions, tasks, and blockers.',
         proj5_sub:       'Visual accessibility · computer vision',
-        proj6_sub:       'Doodle-to-music gallery and a cross-stitch pattern maker.',
+        proj6_sub:       'Doodle-to-music gallery.',
         proj7_sub:       'Annotated corpus · Andean languages',
         tag_access:      'Accessibility',
         proj8_sub:       'CNN · ResNet · 94% accuracy',
@@ -952,7 +923,7 @@
         proj3_sub:       'Automatizaciones, dashboards y web para operaciones LATAM.',
         proj4_sub:       'Pegas una transcripción de reunión. Sales con decisiones, tareas y blockers.',
         proj5_sub:       'Accesibilidad visual · computer vision',
-        proj6_sub:       'Galería doodle-a-música y un generador de patrones de punto cruz.',
+        proj6_sub:       'Galería doodle-a-música.',
         proj7_sub:       'Corpus anotado · lenguas andinas',
         tag_access:      'Accesibilidad',
         proj8_sub:       'CNN · ResNet · 94% precisión',
@@ -1002,7 +973,6 @@
 
     applyLang('en');
 
-    // ── CLOCK ──
     function updateClock(){
       const d=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Lima'}));
       const p=n=>String(n).padStart(2,'0');
@@ -1011,25 +981,22 @@
     }
     updateClock(); setInterval(updateClock,1000);
 
-    // ── HEADER SCROLL ──
     const hdr=document.querySelector('.site-header');
     window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>20),{passive:true});
 
-    // ── ACTIVE NAV ──
     const secs=document.querySelectorAll('main section[id]');
     const nls=document.querySelectorAll('.nav-link[data-nav]');
     const io=new IntersectionObserver(entries=>{
       entries.forEach(e=>{
         if(e.isIntersecting){
           nls.forEach(l=>l.classList.remove('active'));
-          const a=document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+          const a=document.querySelector('.nav-link[href="#' + e.target.id + '"]');
           (a||nls[0]).classList.add('active');
         }
       });
     },{threshold:.35});
     secs.forEach(s=>io.observe(s));
 
-    // ── COPY EMAIL ──
     const EMAIL='mcontrerasmalpar@gmail.com';
     function doCopy(btn,label){
       navigator.clipboard.writeText(EMAIL).then(()=>{
@@ -1044,7 +1011,6 @@
     if(cb) cb.addEventListener('click',()=>doCopy(cb,null));
     if(fb) fb.addEventListener('click',()=>doCopy(fb,fl));
 
-    // ── FILTERS ──
     const filterBtns=document.querySelectorAll('.filter-btn');
     const workItems=document.querySelectorAll('.work-item');
     filterBtns.forEach(btn=>{
@@ -1064,7 +1030,6 @@
       });
     });
 
-    // ── SCROLL REVEAL ──
     const revIO=new IntersectionObserver(entries=>{
       entries.forEach(e=>{
         if(e.isIntersecting){ e.target.classList.add('visible'); revIO.unobserve(e.target); }
@@ -1072,8 +1037,6 @@
     },{threshold:.06});
     document.querySelectorAll('.reveal').forEach(el=>revIO.observe(el));
 
-
-    // ── PROJECT DETAIL ──
     const PROJECTS = {
       khipu: {
         title: 'Khipu-ML',
@@ -1132,11 +1095,11 @@
         ]
       },
       doodio: {
-        title: 'Doodio / PuntoPixel',
+        title: 'Doodio',
         link: 'https://doodio-alpha.vercel.app/',
         desc: {
-          en: 'Doodio turns a drawing into sound. PuntoPixel is a numbered-grid cross-stitch maker. Same creative-tool thread.',
-          es: 'Doodio convierte un dibujo en sonido. PuntoPixel es un generador de punto cruz con grilla numerada. Misma línea de herramientas creativas.'
+          en: 'Draw anything, hear it as music. Doodle gallery with Web Audio.',
+          es: 'Dibuja y lo oyes como música. Galería de doodles con Web Audio.'
         },
         media: [
           { type: 'video', src: 'doodio.mp4', alt: 'Doodio demo' }
@@ -1166,9 +1129,9 @@
       const stage = mediaEl.querySelector('.project-stage');
       if (!stage) return;
       if (item.type === 'video') {
-        stage.innerHTML = `<video controls playsinline preload="metadata" src="${item.src}" aria-label="${item.alt || ''}"></video>`;
+        stage.innerHTML = '<video controls playsinline muted preload="metadata" src="' + item.src + '" aria-label="' + (item.alt || '') + '"></video>';
       } else {
-        stage.innerHTML = `<img src="${item.src}" alt="${item.alt || ''}">`;
+        stage.innerHTML = '<img src="' + item.src + '" alt="' + (item.alt || '') + '">';
       }
       kindEl.textContent = mediaKind(item);
       mediaEl.querySelectorAll('.project-thumb-btn').forEach((btn, i) => {
@@ -1195,14 +1158,14 @@
       } else {
         mediaEl.classList.remove('is-empty');
         const thumbs = project.media.length > 1
-          ? `<div class="project-thumbs">${project.media.map((m, i) => {
+          ? '<div class="project-thumbs">' + project.media.map((m, i) => {
               const inner = m.type === 'video'
-                ? `<video src="${m.src}" muted></video>`
-                : `<img src="${m.src}" alt="">`;
-              return `<button type="button" class="project-thumb-btn${i===0?' active':''}" data-i="${i}" aria-label="${m.alt || ''}">${inner}</button>`;
-            }).join('')}</div>`
-          : `<div class="project-thumbs" hidden></div>`;
-        mediaEl.innerHTML = `<div class="project-stage"></div>${thumbs}`;
+                ? '<video src="' + m.src + '" muted></video>'
+                : '<img src="' + m.src + '" alt="">';
+              return '<button type="button" class="project-thumb-btn' + (i===0?' active':'') + '" data-i="' + i + '" aria-label="' + (m.alt || '') + '">' + inner + '</button>';
+            }).join('') + '</div>'
+          : '<div class="project-thumbs" hidden></div>';
+        mediaEl.innerHTML = '<div class="project-stage"></div>' + thumbs;
         renderStage(project, 0);
         mediaEl.querySelectorAll('.project-thumb-btn').forEach(btn => {
           btn.addEventListener('click', () => renderStage(project, Number(btn.dataset.i)));
@@ -1243,17 +1206,15 @@
       openProject(location.hash.replace('#project-', ''));
     }
 
-
-    // ── CUSTOM CURSOR ──
     const cur=document.getElementById('cursor');
     const ring=document.getElementById('cursor-ring');
     let mx=0,my=0,rx=0,ry=0;
     document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;},{passive:true});
     function lerp(a,b,t){return a+(b-a)*t;}
     (function tick(){
-      cur.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
+      cur.style.transform='translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
       rx=lerp(rx,mx,.12); ry=lerp(ry,my,.12);
-      ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+      ring.style.transform='translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
       requestAnimationFrame(tick);
     })();
     document.querySelectorAll('a,button,[role="button"]').forEach(el=>{
