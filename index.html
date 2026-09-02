@@ -343,17 +343,51 @@
     }
     .work-item:hover .work-arrow { opacity: 1; transform: none; }
     .work-thumb {
-      width: 80px; height: 52px;
+      width: 96px; height: 64px;
       border-radius: 4px;
       overflow: hidden; flex-shrink: 0;
       background: var(--surface);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-      opacity: 0; transform: scale(.92);
-      transition: opacity .3s var(--ease), transform .3s var(--ease);
       border: 1px solid var(--border);
     }
-    .work-item:hover .work-thumb { opacity: 1; transform: scale(1); }
+    .work-thumb img, .work-thumb video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .work-links {
+      display: flex; flex-wrap: wrap; gap: .15rem .7rem;
+      margin-top: .45rem;
+    }
+    .work-link {
+      position: relative; z-index: 2;
+      font-size: var(--text-xs);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--faint);
+    }
+    .work-link:hover { color: var(--text); border-color: var(--text); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    .why-item h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 400;
+      letter-spacing: -.01em;
+      margin-bottom: var(--space-3);
+    }
+    .why-item p {
+      font-size: var(--text-sm);
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .project-links { display: flex; flex-wrap: wrap; gap: 1rem 1.4rem; }
+    @media(max-width: 860px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
 
     .project-overlay {
       position: fixed; inset: 0; z-index: 80;
@@ -539,7 +573,6 @@
       .nav { grid-template-columns: 1fr auto; }
       .nav-center { display: none; }
       .about-grid { grid-template-columns: 1fr; }
-      .work-thumb { display: none; }
     }
     @media(max-width: 600px) {
       .hero-bottom { flex-direction: column; align-items: flex-start; }
@@ -638,10 +671,11 @@
                   <span class="work-tag">GDL</span>
                   <span class="work-tag">arXiv</span>
                 </div>
+                <div class="work-links"><a class="work-link" href="https://github.com/mcontrerasmalpar-pixel/khipu-ml" target="_blank" rel="noopener noreferrer">Repo</a><a class="work-link" href="https://arxiv.org/abs/2607.00185" target="_blank" rel="noopener noreferrer">Paper</a></div>
               </div>
             </div>
             <div class="work-item-right">
-              <div class="work-thumb">🧵</div>
+              <div class="work-thumb"><img src="khipu01.png" alt=""></div>
               <span class="work-arrow">↗</span>
             </div>
           </a>
@@ -654,12 +688,13 @@
                 <div class="work-tags">
                   <span class="work-tag">NLP</span>
                   <span class="work-tag">Quechua</span>
-                  <span class="work-tag">arXiv</span>
+                  <span class="work-tag">PRPE</span>
                 </div>
+                <div class="work-links"><a class="work-link" href="https://github.com/mcontrerasmalpar-pixel/QuechuaTok" target="_blank" rel="noopener noreferrer">Repo</a></div>
               </div>
             </div>
             <div class="work-item-right">
-              <div class="work-thumb">🗣</div>
+              <div class="work-thumb"><img src="tokenizer_comparison.png" alt=""></div>
               <span class="work-arrow">↗</span>
             </div>
           </a>
@@ -673,10 +708,11 @@
                   <span class="work-tag">n8n</span>
                   <span class="work-tag">Product</span>
                 </div>
+                <div class="work-links"><a class="work-link" href="https://flowsbymaky.lat" target="_blank" rel="noopener noreferrer">Live</a></div>
               </div>
             </div>
             <div class="work-item-right">
-              <div class="work-thumb">⚙️</div>
+              <div class="work-thumb"><img src="flowsbymaky.png" alt=""></div>
               <span class="work-arrow">↗</span>
             </div>
           </a>
@@ -690,10 +726,11 @@
                   <span class="work-tag">Product</span>
                   <span class="work-tag">LLM</span>
                 </div>
+                <div class="work-links"><a class="work-link" href="https://github.com/mcontrerasmalpar-pixel/Teampulse" target="_blank" rel="noopener noreferrer">Repo</a><a class="work-link" href="https://mcontrerasmalpar-pixel.github.io/Teampulse/" target="_blank" rel="noopener noreferrer">Live</a></div>
               </div>
             </div>
             <div class="work-item-right">
-              <div class="work-thumb">📋</div>
+              <div class="work-thumb"><img src="teampulse.png" alt=""></div>
               <span class="work-arrow">↗</span>
             </div>
           </a>
@@ -714,10 +751,11 @@
                   <span class="work-tag" data-i18n="tag_access">Accessibility</span>
                   <span class="work-tag">UX</span>
                 </div>
+                <div class="work-links"><a class="work-link" href="https://github.com/mcontrerasmalpar-pixel/text-barrier-detector" target="_blank" rel="noopener noreferrer">Repo</a></div>
               </div>
             </div>
             <div class="work-item-right">
-              <div class="work-thumb">🔍</div>
+              <div class="work-thumb"><video src="TextBarrier.mp4" muted playsinline preload="metadata"></video></div>
               <span class="work-arrow">↗</span>
             </div>
           </a>
@@ -731,13 +769,35 @@
                   <span class="work-tag">Web</span>
                   <span class="work-tag">Creative</span>
                 </div>
+                <div class="work-links"><a class="work-link" href="https://github.com/mcontrerasmalpar-pixel/Doodio" target="_blank" rel="noopener noreferrer">Repo</a><a class="work-link" href="https://doodio-alpha.vercel.app/" target="_blank" rel="noopener noreferrer">Live</a></div>
               </div>
             </div>
             <div class="work-item-right">
-              <div class="work-thumb">🎵</div>
+              <div class="work-thumb"><video src="doodio.mp4" muted playsinline preload="metadata"></video></div>
               <span class="work-arrow">↗</span>
             </div>
           </a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section-wrap" id="why">
+      <div class="section-header reveal">
+        <h2 class="section-title" data-i18n="why_title">Why this work</h2>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-item">
+          <h3 data-i18n="why_khipu_t">Khipus</h3>
+          <p data-i18n="why_khipu">The Inka recorded administration in knots. Structure is the data. That is why this is ML on the Open Khipu Repository, not another chatbot.</p>
+        </div>
+        <div class="why-item">
+          <h3 data-i18n="why_quechua_t">Quechua</h3>
+          <p data-i18n="why_quechua">Most tokenizers assume spaces and European morphology. Southern Quechua does not. If NLP is going to work in the Andes, the tokenizer has to.</p>
+        </div>
+        <div class="why-item">
+          <h3 data-i18n="why_latam_t">LATAM</h3>
+          <p data-i18n="why_latam">I ship from Lima for teams that still run on WhatsApp, sheets, and handoffs. The person who reads the paper also automates the invoice.</p>
         </div>
       </div>
     </section>
@@ -778,16 +838,16 @@
             <span class="about-row-val">Flows by Maky</span>
           </div>
           <div class="about-row">
-            <span class="about-row-label" data-i18n="row_avail">Availability</span>
-            <span class="about-row-val" data-i18n="row_avail_val">Open to remote research / builds</span>
+            <span class="about-row-label" data-i18n="row_avail">Looking for</span>
+            <span class="about-row-val" data-i18n="row_avail_val">Research collab (khipus, Quechua) · builds via Flows by Maky</span>
           </div>
           <div class="about-row">
             <span class="about-row-label" data-i18n="row_langs">Languages</span>
             <span class="about-row-val">ES · EN</span>
           </div>
           <div class="about-row">
-            <span class="about-row-label" data-i18n="row_focus">Focus</span>
-            <span class="about-row-val">Research · LATAM ops</span>
+            <span class="about-row-label" data-i18n="row_focus">Not</span>
+            <span class="about-row-val" data-i18n="row_focus_val">A full-time hire</span>
           </div>
           <div class="about-row">
             <span class="about-row-label" data-i18n="row_programs">Programs</span>
@@ -833,10 +893,7 @@
           <p class="project-kind" id="projectKind"></p>
           <h2 class="project-detail-title" id="projectDetailTitle"></h2>
           <p class="project-detail-desc" id="projectDetailDesc"></p>
-          <a class="link-arrow" id="projectDetailLink" target="_blank" rel="noopener noreferrer">
-            <span id="projectDetailLinkText"></span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
+          <div class="project-links" id="projectDetailLinks"></div>
         </div>
       </div>
     </div>
@@ -858,7 +915,7 @@
         hero_proof:      'Scientific poster, EEML 2026 Cetinje (fully funded) · <a href="https://arxiv.org/abs/2607.00185" target="_blank" rel="noopener noreferrer">arXiv:2607.00185</a>',
         cta_work:        'View work',
         cta_flows:       'Flows by Maky',
-        cta_contact:     "Let's talk",
+        cta_contact:     'Research or a build',
         work_selected:   'selected',
         work_count:      '06 projects',
         filter_all:      'All',
@@ -882,15 +939,26 @@
         about_p3:        'Flows by Maky is the practice: I design, code, and ship the system myself.',
         row_location:    'Location',
         row_current:     'Currently',
-        row_avail:       'Availability',
-        row_avail_val:   'Open to remote research / builds',
+        why_title:       'Why this work',
+        why_khipu_t:     'Khipus',
+        why_khipu:       'The Inka recorded administration in knots. Structure is the data. That is why this is ML on the Open Khipu Repository, not another chatbot.',
+        why_quechua_t:   'Quechua',
+        why_quechua:     'Most tokenizers assume spaces and European morphology. Southern Quechua does not. If NLP is going to work in the Andes, the tokenizer has to.',
+        why_latam_t:     'LATAM',
+        why_latam:       'I ship from Lima for teams that still run on WhatsApp, sheets, and handoffs. The person who reads the paper also automates the invoice.',
+        row_avail:       'Looking for',
+        row_avail_val:   'Research collab (khipus, Quechua) · builds via Flows by Maky',
         row_langs:       'Languages',
-        row_focus:       'Focus',
+        row_focus:       'Not',
+        row_focus_val:   'A full-time hire',
         row_programs:    'Programs',
-        footer_headline: "Let's<br><em>talk.</em>",
+        footer_headline: 'Research,<br><em>or a build.</em>',
         footer_copy:     '© 2026 Maria del Carmen Contreras · Designed with intention ✦',
         overlay_close:   'Close',
-        overlay_link:    'Open project',
+        overlay_link:    'Open',
+        link_repo:       'Repo',
+        link_paper:      'Paper',
+        link_live:       'Live',
         overlay_foto:    'Photo',
         overlay_video:   'Video',
         copied:          '✓ Copied!',
@@ -909,7 +977,7 @@
         hero_proof:      'Póster científico, EEML 2026 Cetinje (fully funded) · <a href="https://arxiv.org/abs/2607.00185" target="_blank" rel="noopener noreferrer">arXiv:2607.00185</a>',
         cta_work:        'Ver trabajo',
         cta_flows:       'Flows by Maky',
-        cta_contact:     'Hablemos',
+        cta_contact:     'Research o un build',
         work_selected:   'seleccionado',
         work_count:      '06 proyectos',
         filter_all:      'Todo',
@@ -933,15 +1001,26 @@
         about_p3:        'Flows by Maky es la práctica: diseño, programo y entrego el sistema yo.',
         row_location:    'Ubicación',
         row_current:     'Actualmente',
-        row_avail:       'Disponibilidad',
-        row_avail_val:   'Abierta a research / builds remotos',
+        why_title:       'Por qué este trabajo',
+        why_khipu_t:     'Khipus',
+        why_khipu:       'Los inka registraban administración en nudos. La estructura es el dato. Por eso es ML sobre el Open Khipu Repository, no otro chatbot.',
+        why_quechua_t:   'Quechua',
+        why_quechua:     'La mayoría de tokenizers asume espacios y morfología europea. El quechua sureño no. Si el NLP va a funcionar en los Andes, el tokenizer tiene que hacerlo.',
+        why_latam_t:     'LATAM',
+        why_latam:       'Entrego desde Lima para equipos que aún corren en WhatsApp, sheets y pases a mano. Quien lee el paper también automatiza la factura.',
+        row_avail:       'Busco',
+        row_avail_val:   'Colab de research (khipus, quechua) · builds con Flows by Maky',
         row_langs:       'Idiomas',
-        row_focus:       'Foco actual',
+        row_focus:       'No',
+        row_focus_val:   'Un puesto full-time',
         row_programs:    'Programas',
-        footer_headline: 'Hablemos.<br><em>✦</em>',
+        footer_headline: 'Research,<br><em>o un build.</em>',
         footer_copy:     '© 2026 Maria del Carmen Contreras · Diseñado con intención ✦',
         overlay_close:   'Cerrar',
-        overlay_link:    'Abrir proyecto',
+        overlay_link:    'Abrir',
+        link_repo:       'Repo',
+        link_paper:      'Paper',
+        link_live:       'Live',
         overlay_foto:    'Foto',
         overlay_video:   'Video',
         copied:          '✓ ¡Copiado!',
@@ -1040,7 +1119,10 @@
     const PROJECTS = {
       khipu: {
         title: 'Khipu-ML',
-        link: 'https://github.com/mcontrerasmalpar-pixel/khipu-ml',
+        links: [
+          { href: 'https://github.com/mcontrerasmalpar-pixel/khipu-ml', kind: 'repo' },
+          { href: 'https://arxiv.org/abs/2607.00185', kind: 'paper' }
+        ],
         desc: {
           en: 'Structural ML on the Open Khipu Repository. UMAP + HDBSCAN cluster the cords; XGBoost detects imperial style at F1 0.86. Scientific poster, EEML 2026 Cetinje. Paper: arXiv:2607.00185.',
           es: 'ML estructural sobre el Open Khipu Repository. UMAP + HDBSCAN agrupan las cuerdas; XGBoost detecta el estilo imperial con F1 0.86. Póster científico, EEML 2026 Cetinje. Paper: arXiv:2607.00185.'
@@ -1052,7 +1134,9 @@
       },
       quechua: {
         title: 'QuechuaTok',
-        link: 'https://github.com/mcontrerasmalpar-pixel/QuechuaTok',
+        links: [
+          { href: 'https://github.com/mcontrerasmalpar-pixel/QuechuaTok', kind: 'repo' }
+        ],
         desc: {
           en: 'Morphological tokenization for Southern Quechua. PRPE hits 83.33% MorphAcc against 6.67% for BPE on the gold set. Installable Python package.',
           es: 'Tokenización morfológica para quechua sureño. PRPE llega a 83.33% MorphAcc frente a 6.67% de BPE en el set gold. Paquete Python instalable.'
@@ -1063,7 +1147,9 @@
       },
       flows: {
         title: 'Flows by Maky',
-        link: 'https://flowsbymaky.lat',
+        links: [
+          { href: 'https://flowsbymaky.lat', kind: 'live' }
+        ],
         desc: {
           en: 'Automations, dashboards, and web for LATAM ops. n8n and custom Python, designed, coded, and shipped by one person.',
           es: 'Automatizaciones, dashboards y web para operaciones LATAM. n8n y Python a medida; diseño, código y entrega por una sola persona.'
@@ -1074,7 +1160,10 @@
       },
       teampulse: {
         title: 'TeamPulse',
-        link: 'https://mcontrerasmalpar-pixel.github.io/Teampulse/',
+        links: [
+          { href: 'https://github.com/mcontrerasmalpar-pixel/Teampulse', kind: 'repo' },
+          { href: 'https://mcontrerasmalpar-pixel.github.io/Teampulse/', kind: 'live' }
+        ],
         desc: {
           en: 'Drop in a meeting transcript. Get back decisions, tasks, and blockers. CLI and MCP server; Gemini, Claude, GPT-4, Mistral, or local Ollama.',
           es: 'Pegas una transcripción de reunión. Sales con decisiones, tareas y blockers. CLI y servidor MCP; Gemini, Claude, GPT-4, Mistral u Ollama local.'
@@ -1085,7 +1174,9 @@
       },
       barrier: {
         title: 'Text Barrier Detector',
-        link: 'https://github.com/mcontrerasmalpar-pixel/text-barrier-detector',
+        links: [
+          { href: 'https://github.com/mcontrerasmalpar-pixel/text-barrier-detector', kind: 'repo' }
+        ],
         desc: {
           en: 'Computer vision for visual accessibility: detect text that is hard to read in the real world.',
           es: 'Computer vision para accesibilidad visual: detectar texto difícil de leer en el mundo real.'
@@ -1096,7 +1187,10 @@
       },
       doodio: {
         title: 'Doodio',
-        link: 'https://doodio-alpha.vercel.app/',
+        links: [
+          { href: 'https://github.com/mcontrerasmalpar-pixel/Doodio', kind: 'repo' },
+          { href: 'https://doodio-alpha.vercel.app/', kind: 'live' }
+        ],
         desc: {
           en: 'Draw anything, hear it as music. Doodle gallery with Web Audio.',
           es: 'Dibuja y lo oyes como música. Galería de doodles con Web Audio.'
@@ -1112,8 +1206,6 @@
     const kindEl = document.getElementById('projectKind');
     const titleEl = document.getElementById('projectDetailTitle');
     const descEl = document.getElementById('projectDetailDesc');
-    const linkEl = document.getElementById('projectDetailLink');
-    const linkTextEl = document.getElementById('projectDetailLinkText');
     const closeBtn = document.getElementById('projectClose');
     let activeMedia = 0;
     let activeProject = null;
@@ -1147,9 +1239,13 @@
       const t = i18n[currentLang] || i18n.en;
       titleEl.textContent = project.title;
       descEl.textContent = project.desc[currentLang] || project.desc.en;
-      linkEl.href = project.link;
-      linkTextEl.textContent = t.overlay_link;
       closeBtn.setAttribute('aria-label', t.overlay_close);
+      const linksEl = document.getElementById('projectDetailLinks');
+      const kindLabel = { repo: t.link_repo, paper: t.link_paper, live: t.link_live };
+      linksEl.innerHTML = (project.links || []).map(function(l) {
+        const label = kindLabel[l.kind] || t.overlay_link;
+        return '<a class="link-arrow" href="' + l.href + '" target="_blank" rel="noopener noreferrer">' + label + '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>';
+      }).join('');
 
       if (!project.media.length) {
         mediaEl.classList.add('is-empty');
@@ -1188,6 +1284,7 @@
 
     document.querySelectorAll('.work-item[data-project]').forEach(item => {
       item.addEventListener('click', e => {
+        if (e.target.closest('.work-link')) return;
         e.preventDefault();
         openProject(item.dataset.project);
       });
